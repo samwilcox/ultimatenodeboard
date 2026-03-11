@@ -1,0 +1,12 @@
+[
+    {
+        "key": "en-US",
+        "title": "English (US-American)",
+        "folder": "en-US",
+        "author": {
+            "name": "Ultimate Node Board",
+            "email": "sam@ultimatenodeboard.com",
+            "url": "https://www.ultimatenodeboard.com"
+        }
+    }
+]

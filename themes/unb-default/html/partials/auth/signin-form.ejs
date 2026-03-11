@@ -1,0 +1,73 @@
+<dialog class="unb-modal" id="unb-modal-signin" data-unb-dialog-modal open>
+    <form name="signin" id="unb-signin-form" action="<%= auth.action %>" method="post" enctype="application/x-www-form-urlencoded">
+        <div class="unb-modal-header unb-modal-header-grid">
+            <div>Sign In</div>
+            <div class="unb-align-right">
+                <a href="#" data-unb-modal-close><i class="fa-solid fa-xmark"></i></a>
+            </div>
+        </div>
+        <div class="unb-modal-body">
+            <%- include('../components/errorbox.ejs', { errorbox: auth.errorBox }) %>
+            <div class="unb-form-group">
+                <div class="unb-float-form-field">
+                    <i class="fa-solid fa-user unb-float-form-field-icon"></i>
+                    <% if (auth.settings.allowUsername) { %>
+                        <input type="text" name="identity" data-role="identity" class="margin" placeholder=" " data-unb-identity required>
+                        <label class="margin"><%= t('auth.form.identity.username.email.placeholder') %></label>
+                    <% } else { %>
+                        <input type="email" max="identity" data-role="identity" class="margin" placeholder=" " data-unb-identity required>
+                        <label class="margin"><%= t('auth.form.identity.email.placeholder') %></label>
+                    <% } %>
+                </div>
+            </div>
+            <div class="unb-form-group">
+                <div class="unb-float-form-field">
+                    <span class="unb-password-toggle-view">
+                        <a href="#" class="tooltip tooltip--top" data-title="<%= t('auth.form.password.toggle.show.tooltip') %>" data-unb-toggle-protected><i class="fa-solid fa-eye-slash"></i></a>
+                    </span>
+                    <i class="fa-solid fa-key unb-float-form-field-icon"></i>
+                    <input type="password" name="password" placeholder=" " class="margin" required data-unb-toggle-protected-field>
+                    <label class="margin"><%= t('auth.form.password.placeholder') %></label>
+                </div>
+            </div>
+            <% if (auth.settings.rememberMeAllowed) { %>
+                <div class="unb-form-group">
+                    <div class="unb-checkbox-grid upper-margin" style="--margin-size: 10px;">
+                        <div>
+                            <div class="unb-checkbox">
+                                <span class="unb-checkbox">
+                                    <input type="checkbox" name="rememberme" value="1" id="unb-signin-form-rememberme-checkbox">
+                                    <svg>
+                                    <use xlink:href="#checkbox" class="unb-checkbox"></use>
+                                    </svg>
+                                </span>
+                                <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+                                    <symbol id="checkbox" viewBox="0 0 22 22">
+                                    <path fill="none" stroke="currentColor" d="M5.5,11.3L9,14.8L20.2,3.3l0,0c-0.5-1-1.5-1.8-2.7-1.8h-13c-1.7,0-3,1.3-3,3v13c0,1.7,1.3,3,3,3h13 c1.7,0,3-1.3,3-3v-13c0-0.4-0.1-0.8-0.3-1.2"/>
+                                    </symbol>
+                                </svg>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="unb-signin-form-rememberme-checkbox">
+                                <span class="unb-checkbox-title"><%= t('auth.form.rememberme.title') %></span><br>
+                                <span class="unb-checkbox-info muted"><%= t('auth.form.rememberme.info') %></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+            <div class="unb-form-group unb-align-center">
+                <% if (csrf?.enabled && csrf?.token) { %>
+                    <input type="hidden" name="_csrf" value="<%= csrf.token %>">
+                <% } %> 
+                <input type="hidden" name="url" value="<%= auth.currentUrl %>">
+                <input type="submit" name="signinsubmit" value="<%= t('auth.form.signin.submit.button') %>">
+            </div>
+        </div>
+        <div class="unb-modal-footer unb-align-center unb-sign-in-option">
+            <span><%- auth.parsedLocale.forgotPassword %></span>
+            <span><%- auth.parsedLocale.signUp %></span>
+        </div>
+    </form>
+</dialog>

@@ -1,0 +1,43 @@
+[
+    {
+        "key": "member_mmlqcc78_seL54w",
+        "username": "devbob",
+        "displayName": "Development Bob",
+        "useDisplayName": true,
+        "passwordHash": "",
+        "emailAddress": "bob@ultimatenodeboard.com",
+        "locale": "en-US",
+        "theme": "unb-default",
+        "themeMode": "dark",
+        "settings": {
+            "dateTime": {
+                "timeZone": "America/Denver",
+                "format": {
+                    "date": "MM/dd/yyyy",
+                    "time": "hh:mm a",
+                    "full": "MM/dd/yyyy hh:mm a"
+                },
+                "timeAgo": true
+            },
+            "pagination": {
+                "limit": {
+                    "topics": 30,
+                    "posts": 30
+                }
+            },
+            "topics": {
+                "preview": true
+            },
+            "editor": {
+                
+            }
+        },
+        "primaryGroup": "administrators",
+        "secondaryGroups": null,
+        "photo": {
+            "type": "uploaded",
+            "key": ""
+        },
+        "lastVisit": ""
+    }
+]

@@ -1,0 +1,16 @@
+{
+    "service.no.topics": "No topics have been created yet",
+    "view.builder.replied.at": "<strong>{link}</strong> replied {timestamp}",
+    "view.builder.started": "<strong>{link}</strong> started {timestamp}",
+    "view.builder.bubble.tooltip.pinned": "Pinned",
+    "view.builder.bubble.tooltip.locked": "Locked",
+    "view.builder.bubble.tooltip.attachments": "Contains attachment(s)",
+    "view.builder.bubble.tooltip.solution": "Contains solution",
+    "view.builder.bubble.tooltip.poll": "Contains a poll",
+    "view.builder.bubble.tooltip.hot": "This topic is HOT! (>= {total})",
+    "view.builder.bubble.tooltip.unread": "Contains unread content",
+    "bubble.hot": "Hot",
+    "bubble.views.singular": "<strong>{total}</strong> view",
+    "bubble.views.plural": "<strong>{total}</strong> views",
+    "more.tags.tooltip": "More tags"
+}

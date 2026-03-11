@@ -1,0 +1,454 @@
+<div class="unb-editor" data-unb-editor-key="<%= editor.key %>">
+    <div
+        class="unb-editor-surface relative"
+        data-unb-editor
+        data-unb-input="#post-content"
+        data-unb-placeholder=""
+    >
+        <% if (editor.enabledGroups.toolbar) { %>
+            <div class="unb-editor-toolbar">
+                <% if (editor.enabledGroups.font) { %>
+                    <span class="tool">
+                        <a href="#" class="dropdown-toggle" data-dropdown="unb-dd-font"><i class="fa-solid fa-circle-down"></i></a>
+                    </span>
+                <% } %>
+                <% if (editor.enabledGroups.markup) { %>
+                    <span class="bar">&nbsp;</span>
+                    <span class="tool">
+                        <% if (editor.enabledTools.bold.enabled) { %>
+                            <a href="#" data-tool="bold" class="tooltip tooltip--top" data-title="<%= editor.enabledTools.bold.label %>"><i class="fa-solid fa-bold"></i></a>
+                        <% } %>
+                        <% if (editor.enabledTools.italic.enabled) { %>
+                            <a href="#" data-tool="italic" data-title="<%= editor.enabledTools.italic.label %>"><i class="fa-solid fa-italic"></i></a>
+                        <% } %>
+                        <% if (editor.enabledTools.underline.enabled) { %>
+                            <a href="#" data-tool="underline" data-title="<%= editor.enabledTools.underline.label %>"><i class="fa-solid fa-underline"></i></a>
+                        <% } %>
+                    </span>
+                <% } %>
+                <% if (editor.enabledGroups.extra) { %>
+                    <span class="bar">&nbsp;</span>
+                    <span class="tool">
+                        <a href="#" class="dropdown-toggle" data-dropdown="unb-dd-addformatting"><i class="fa-solid fa-ellipsis"></i></a>
+                    </span>
+                <% } %>
+                <% if (editor.enabledGroups.insert) { %>
+                    <span class="bar">&nbsp;</span>
+                    <span class="tool">
+                        <a href="#" class="dropdown-toggle" data-dropdown="unb-dd-insert"><i class="fa-solid fa-circle-plus"></i></a>
+                    </span>
+                <% } %>
+                <% if (editor.enabledGroups.lists) { %>
+                    <span class="bar">&nbsp;</span>
+                    <span class="tool">
+                        <% if (editor.enabledTools.undo.enabled) { %>
+                            <a href="#" data-tool="undo" data-title="<%= editor.enabledTools.undo.label %>"><i class="fa-solid fa-rotate-left"></i></a>
+                        <% } %>
+                        <% if (editor.enabledTools.redo.enabled) { %>
+                            <a href="#" data-tool="redo" data-title="<%= editor.enabledTools.redo.label %>"><i class="fa-solid fa-rotate-right"></i></a>
+                        <% } %>
+                    </span>
+                <% } %>
+
+                <% if (editor.enabledGroups.font) { %>
+                    <div class="unb-drop-down" data-keep-open="true" id="unb-dd-font" data-dropdown-menu="unb-dd-font">
+                    <span class="unb-drop-down-links">
+                        <% if (editor.enabledTools.font) { %>
+                            <a href="#" data-unb-editor-font-select><i class="fa-solid fa-font"></i><span data-unb-editor-font-display><%= t('common.default') %></span><i class="fa-solid fa-angle-down"></i></a>
+                            <span class="unb-drop-down-scroller" data-unb-editor-font-scroller>
+                                <a href="#" data-tool="font" data-unb-editor-font="default"><%= t('common.default') %></a>
+                                <% if (editor.fonts) { %>
+                                    <% editor.fonts.forEach(font => { %>
+                                        <a href="#" style="font-family: <%= font %>;" data-tool="font" data-unb-editor-font="<%= font %>"><%= font %></a>
+                                    <% }) %>
+                                <% } %>
+                            </span>
+                        <% } %>
+                        <% if (editor.enabledTools.size) { %>
+                            <a href="#" data-unb-editor-font-size-select><i class="fa-solid fa-text-height"></i><span data-unb-editor-font-size-display><%= t('common.default') %></span><i class="fa-solid fa-angle-down"></i></a>
+                            <span class="unb-drop-down-scroller" data-unb-editor-font-size-scroller>
+                                <a href="#" data-tool="size" data-unb-editor-font-size="default"><%= t('common.default') %></a>
+                                <% if (editor.fontSizes) { %>
+                                    <% editor.fontSizes.forEach(size => { %>
+                                        <a href="#" data-tool="size" style="font-size: <%= size %>px;" data-unb-editor-font-size="<%= size %>"><%= size %></a>
+                                    <% }) %>
+                                <% } %>
+                            </span>
+                        <% } %>
+                        <% if (editor.enabledTools.color) { %>
+                            <a href="#" data-unb-editor-font-color-select><i class="fa-solid fa-fill"></i><span data-unb-editor-font-color-display><%= t('common.default') %></span><i class="fa-solid fa-angle-down"></i></a>
+                            <span class="unb-drop-down-scroller" data-unb-editor-font-color-scroller>
+                                <a href="#" data-tool="color" data-unb-editor-font-color="default"><span class="unb-editor-color-box unb-editor-default-font-color">&nbsp;</span><%= t('common.default') %></a>
+                                <% if (editor.fontColors) { %>
+                                    <% editor.fontColors.forEach(color => { %>
+                                        <a href="#" data-tool="color" data-unb-editor-font-color="<%= color.hex %>" data-unb-editor-font-color-label="<%= color.label %>"><span class="unb-editor-color-box" style="--font-color: <%= color.hex %>">&nbsp;</span><%= color.label %></a>
+                                    <% }) %>
+                                <% } %>
+                            </span>
+                        <% } %>
+                    </span>
+                <% } %>
+                </div>
+
+                <% if (editor.enabledGroups.markup || editor.enabledGroups.align) { %>
+                    <div class="unb-drop-down" id="unb-dd-addformatting" data-dropdown-menu="unb-dd-addformatting">
+                        <span class="unb-drop-down-links">
+                            <% if (editor.enabledTools.strikethrough.enabled) { %>
+                                <a href="#" data-tool="strike" data-title="<%= editor.enabledTools.strikethrough.label %>"><i class="fa-solid fa-strikethrough"></i><%= t('editor.tools.strikethrough') %></a>
+                            <% } %>
+                            <% if (editor.enabledGroups.script) { %>
+                                <% if (editor.enabledTools.subscript.enabled) { %>
+                                    <a href="#" data-tool="subscript" data-title="<%= editor.enabledTools.subscript.label %>"><i class="fa-solid fa-subscript"></i><%= t('editor.tools.subscript') %></a>
+                                <% } %>
+                                <% if (editor.enabledTools.superscript.enabled) { %>
+                                    <a href="#" data-tool="superscript" data-title="<%= editor.enabledTools.superscript.label %>"><i class="fa-solid fa-superscript"></i><%= t('editor.tools.superscript') %></a>
+                                <% } %>
+                            <% } %>
+                            <% if (editor.enabledGroups.align) { %>
+                                <a href="#" data-unb-editor-addformatting-select><i class="fa-solid fa-align-left"></i><%= t('editor.tools.text.align') %><i class="fa-solid fa-angle-down"></i></a>
+                                <span class="unb-drop-down-scroller" data-unb-editor-addformatting-scroller>
+                                    <% if (editor.enabledTools['align.left'].enabled) { %>
+                                        <a href="#" data-tool="alignLeft" data-title="<%= editor.enabledTools['align.left'].label %>"><i class="fa-solid fa-align-left"></i><%= t('editor.tools.align.left') %></a>
+                                    <% } %>
+                                    <% if (editor.enabledTools['align.center'].enabled) { %>
+                                        <a href="#" data-tool="alignCenter" data-title="<%= editor.enabledTools['align.center'].label %>"><i class="fa-solid fa-align-center"></i><%= t('editor.tools.align.center') %></a>
+                                    <% } %>
+                                    <% if (editor.enabledTools['align.right'].enabled) { %>
+                                        <a href="#" data-tool="alignRight" data-title="<%= editor.enabledTools['align.right'].label %>"><i class="fa-solid fa-align-right"></i><%= t('editor.tools.align.right') %></a>
+                                    <% } %>
+                                    <% if (editor.enabledTools['align.justify'].enabled) { %>
+                                        <a href="#" data-tool="alignJustify" data-title="<%= editor.enabledTools['align.justify'].label %>"><i class="fa-solid fa-align-justify"></i><%= t('editor.tools.align.justify') %></a>
+                                    <% } %>
+                                </span>
+                            <% } %>
+                            <% if (editor.enabledTools.indent.enabled) { %>
+                                <a href="#" data-tool="indent" data-title="<%= editor.enabledTools.indent.label %>"><i class="fa-solid fa-indent"></i><%= t('editor.tools.indent') %></a>
+                            <% } %>
+                            <% if (editor.enabledTools.outdent.enabled) { %>
+                                <a href="#" data-tool="outdent" data-title="<%= editor.enabledTools.indent.label %>"><i class="fa-solid fa-outdent"></i><%= t('editor.tools.outdent') %></a>
+                            <% } %>
+                            <% if (editor.enabledTools['ordered.list'].enabled) { %>
+                                <a href="#" data-tool="orderedList" data-title="<%= editor.enabledTools['ordered.list'].label %>"><i class="fa-solid fa-list-ol"></i><%= t('editor.tools.ordered.list') %></a>
+                            <% } %>
+                            <% if (editor.enabledTools['unordered.list'].enabled) { %>
+                                <a href="#" data-tool="bulletList" data-title="<%= editor.enabledTools['unordered.list'].label %>"><i class="fa-solid fa-list"></i><%= t('editor.tools.unordered.list') %></a>
+                            <% } %>
+                        </span>
+                    </div>
+                <% } %>
+
+                <% if (editor.enabledGroups.insert) { %>
+                    <div class="unb-drop-down" id="unb-dd-insert" data-dropdown-menu="unb-dd-insert">
+                        <span class="unb-drop-down-links">
+                            <% if (editor.enabledTools['insert.hyperlink'].enabled) { %>
+                                <a href="#" data-unb-modal-open="unb-modal-insert-link" data-title="<%= editor.enabledTools['insert.hyperlink'].label %>"><i class="fa-solid fa-link"></i><%= t('editor.tools.insert.hyperlink') %></a>
+                            <% } %>
+                            <% if (editor.enabledTools['insert.image'].enabled) { %>
+                                <a href="#" data-unb-editor-key="<%= editor.key %>" data-tool="image" data-title="<%= editor.enabledTools['insert.image'].label %>"><i class="fa-solid fa-image"></i><%= t('editor.tools.insert.image') %></a>
+                            <% } %>
+                            <% if (editor.enabledTools['insert.media'].enabled) { %>
+                                <a href="#" data-unb-editor-key="<%= editor.key %>" data-tool="media" data-title="<%= editor.enabledTools['insert.media'].label %>"><i class="fa-solid fa-circle-play"></i><%= t('editor.tools.insert.media') %></a>
+                            <% } %>
+                            <% if (editor.enabledTools['insert.gif'].enabled) { %>
+                                <a href="#" data-unb-editor-key="<%= editor.key %>" data-tool="gif" data-title="<%= editor.enabledTools['insert.gif'].label %>"><i class="fa-solid fa-photo-film"></i><%= t('editor.tools.insert.gif') %></a>
+                            <% } %>
+                            <% if (editor.enabledTools['insert.emoji'].enabled) { %>
+                                <a href="#" data-unb-editor-key="<%= editor.key %>" data-tool="emoji" data-title="<%= editor.enabledTools['insert.emoji'].label %>"><i class="fa-solid fa-face-smile-beam"></i><%= t('editor.tools.insert.emoji') %></a>
+                            <% } %>
+                            <% if (editor.enabledTools['insert.code'].enabled) { %>
+                                <a href="#" data-unb-editor-key="<%= editor.key %>" data-tool="code" data-title="<%= editor.enabledTools['insert.code'].label %>"><i class="fa-solid fa-code"></i><%= t('editor.tools.insert.code') %></a>
+                            <% } %>
+                            <% if (editor.enabledTools['insert.quote'].enabled) { %>
+                                <a href="#" data-unb-editor-key="<%= editor.key %>" data-tool="quote" data-title="<%= editor.enabledTools['insert.quote'].label %>"><i class="fa-solid fa-quote-right"></i><%= t('editor.tools.insert.quote') %></a>
+                            <% } %>
+                            <% if (editor.enabledTools['insert.spoiler'].enabled) { %>
+                                <a href="#" data-unb-editor-key="<%= editor.key %>" data-tool="spoiler" data-title="<%= editor.enabledTools['insert.spoiler'].label %>"><i class="fa-solid fa-eye"></i><%= t('editor.tools.insert.spoiler') %></a>
+                            <% } %>
+                            <% if (editor.enabledTools['insert.horizontal.rule'].enabled) { %>
+                                <a href="#" data-tool="horizontalRule"><i class="fa-solid fa-minus"></i><%= t('editor.tools.insert.horizontal.rule') %></a>
+                            <% } %>
+                        </span>
+                    </div>
+                <% } %>
+            </div>
+        <% } %>
+
+        <% if (editor.enabledTools['insert.hyperlink']) { %>
+            <dialog class="unb-modal" id="unb-modal-insert-link" data-editor-key="<%= editor.key %>" data-unb-dialog-modal data-unb-editor-insert-link-modal open>
+                <div class="unb-modal-header unb-modal-header-grid">
+                    <div><%= t('editor.tools.insert.link.modal.title') %></div>
+                    <div class="unb-align-right">
+                        <a href="#" data-unb-modal-close><i class="fa-solid fa-xmark"></i></a>
+                    </div>
+                </div>
+                <div class="unb-modal-body">
+                    <div class="unb-form-group">
+                        <div class="unb-float-form-field">
+                            <input type="url" placeholder=" " data-unb-editor-insert-url-url-field>
+                            <label><%= t('editor.tools.insert.link.url.placeholder') %></label>
+                        </div>
+                    </div>
+                    <div class="unb-form-group">
+                        <div class="unb-float-form-field">
+                            <input type="text" placeholder=" " data-unb-editor-insert-url-title-field>
+                            <label><%= t('editor.tools.insert.link.title.placeholder') %></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="unb-modal-footer unb-align-center">
+                    <input type="button" data-unb-editor-insert-url-button value="<%= t('editor.tools.insert.link.button') %>">
+                </div>
+            </dialog>
+        <% } %>
+
+        <% if (editor.enabledTools['insert.image']) { %>
+            <dialog class="unb-modal" id="unb-modal-insert-image" data-unb-editor-key="<%= editor.key %>" data-unb-width="700" data-unb-dialog-modal data-unb-editor-insert-image-modal open>
+                <div class="unb-modal-header unb-modal-header-grid">
+                    <div><%= t('editor.tools.insert.image.modal.title') %></div>
+                    <div class="unb-align-right">
+                        <a href="#" data-unb-modal-close><i class="fa-solid fa-xmark"></i></a>
+                    </div>
+                </div>
+                <div class="unb-modal-body">
+                    <div class="unb-form-group">
+                        <div class="unb-float-form-field">
+                            <input type="url" placeholder=" " data-unb-editor-insert-image-url-field>
+                            <label><%= t('editor.tools.insert.image.url.placeholder') %></label>
+                        </div>
+                    </div>
+                    <div class="unb-form-group">
+                        <div class="unb-checkbox-grid centered">
+                            <div>
+                                <div class="unb-checkbox">
+                                    <span class="unb-checkbox">
+                                        <input type="checkbox" value="1" id="unb-editor-insert-image-custom-checkbox-<%= editor.key %>" data-unb-editor-key="<%= editor.key %>" data-unb-editor-insert-image-custom-checkbox>
+                                        <svg>
+                                        <use xlink:href="#checkbox" class="unb-checkbox"></use>
+                                        </svg>
+                                    </span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+                                        <symbol id="checkbox" viewBox="0 0 22 22">
+                                        <path fill="none" stroke="currentColor" d="M5.5,11.3L9,14.8L20.2,3.3l0,0c-0.5-1-1.5-1.8-2.7-1.8h-13c-1.7,0-3,1.3-3,3v13c0,1.7,1.3,3,3,3h13 c1.7,0,3-1.3,3-3v-13c0-0.4-0.1-0.8-0.3-1.2"/>
+                                        </symbol>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div>
+                                <label for="unb-editor-insert-image-custom-checkbox-<%= editor.key %>">
+                                    <span class="unb-checkbox-title-two"><%= t('editor.tools.insert.image.custom.dimensions') %></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="unb-form-group" style="display: none;" data-unb-editor-key="<%= editor.key %>" data-unb-editor-insert-image-dimensions>
+                        <div class="unb-editor-image-dim-grid">
+                            <div>
+                                <div class="unb-editor-image-dim-left-grid">
+                                    <div class="unb-editor-image-dim-field-grid ">
+                                        <div><%= t('editor.tools.insert.image.width') %></div>
+                                        <div class="unb-float-form-field">
+                                            <input type="number" min="0" class="unb-editor-image-dim-number" data-unb-editor-insert-image-width>
+                                        </div>
+                                    </div>
+                                    <div class="unb-editor-image-dim-field-grid ">
+                                        <div><%= t('editor.tools.insert.image.height') %></div>
+                                        <div class="unb-float-form-field">
+                                            <input type="number" min="0" class="unb-editor-image-dim-number" data-unb-editor-insert-image-height>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="unb-checkbox-grid centered">
+                                    <div>
+                                        <div class="unb-checkbox">
+                                            <span class="unb-checkbox">
+                                                <input type="checkbox" value="1" id="unb-editor-insert-image-ar-checkbox-<%= editor.key %>" data-unb-editor-key="<%= editor.key %>" data-unb-editor-insert-image-ar-checkbox>
+                                                <svg>
+                                                <use xlink:href="#checkbox" class="unb-checkbox"></use>
+                                                </svg>
+                                            </span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+                                                <symbol id="checkbox" viewBox="0 0 22 22">
+                                                <path fill="none" stroke="currentColor" d="M5.5,11.3L9,14.8L20.2,3.3l0,0c-0.5-1-1.5-1.8-2.7-1.8h-13c-1.7,0-3,1.3-3,3v13c0,1.7,1.3,3,3,3h13 c1.7,0,3-1.3,3-3v-13c0-0.4-0.1-0.8-0.3-1.2"/>
+                                                </symbol>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label for="unb-editor-insert-image-ar-checkbox-<%= editor.key %>">
+                                            <span class="unb-checkbox-title-two"><%= t('editor.tools.insert.image.aspect.ratio') %></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="unb-modal-footer unb-align-center">
+                    <input type="button" value="<%= t('editor.tools.insert.image.button') %>" data-unb-editor-key="<%= editor.key %>" data-unb-editor-insert-image-button>
+                </div>
+            </dialog>
+        <% } %>
+
+        <% if (editor.enabledTools['insert.media']) { %>
+            <dialog class="unb-modal" id="unb-modal-insert-media" data-unb-editor-key="<%= editor.key %>" data-unb-width="700" data-unb-dialog-modal data-unb-editor-insert-media-modal open>
+                <div class="unb-modal-header unb-modal-header-grid">
+                    <div><%= t('editor.tools.insert.media.modal.title') %></div>
+                    <div class="unb-align-right">
+                        <a href="#" data-unb-modal-close><i class="fa-solid fa-xmark"></i></a>
+                    </div>
+                </div>
+                <div class="unb-modal-body">
+                    <div class="unb-form-group">
+                        <div class="unb-float-form-field">
+                            <input type="url" placeholder=" " data-unb-editor-insert-media-url-field>
+                            <label><%= t('editor.tools.insert.media.url.placeholder') %></label>
+                        </div>
+                    </div>
+                    <div class="unb-form-group">
+                        <div class="unb-checkbox-grid centered">
+                            <div>
+                                <div class="unb-checkbox">
+                                    <span class="unb-checkbox">
+                                        <input type="checkbox" value="1" id="unb-editor-insert-media-custom-checkbox-<%= editor.key %>" data-unb-editor-key="<%= editor.key %>" data-unb-editor-insert-media-custom-checkbox>
+                                        <svg>
+                                        <use xlink:href="#checkbox" class="unb-checkbox"></use>
+                                        </svg>
+                                    </span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+                                        <symbol id="checkbox" viewBox="0 0 22 22">
+                                        <path fill="none" stroke="currentColor" d="M5.5,11.3L9,14.8L20.2,3.3l0,0c-0.5-1-1.5-1.8-2.7-1.8h-13c-1.7,0-3,1.3-3,3v13c0,1.7,1.3,3,3,3h13 c1.7,0,3-1.3,3-3v-13c0-0.4-0.1-0.8-0.3-1.2"/>
+                                        </symbol>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div>
+                                <label for="unb-editor-insert-media-custom-checkbox-<%= editor.key %>">
+                                    <span class="unb-checkbox-title-two"><%= t('editor.tools.insert.media.custom.dimensions') %></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="unb-form-group" style="display: none;" data-unb-editor-key="<%= editor.key %>" data-unb-editor-insert-media-dimensions>
+                        <div class="unb-editor-image-dim-left-grid">
+                            <div class="unb-editor-image-dim-field-grid ">
+                                <div><%= t('editor.tools.insert.media.width') %></div>
+                                <div class="unb-float-form-field">
+                                    <input type="number" min="0" class="unb-editor-image-dim-number" data-unb-editor-insert-media-width>
+                                </div>
+                            </div>
+                            <div class="unb-editor-image-dim-field-grid ">
+                                <div><%= t('editor.tools.insert.media.height') %></div>
+                                <div class="unb-float-form-field">
+                                    <input type="number" min="0" class="unb-editor-image-dim-number" data-unb-editor-insert-media-height>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="unb-modal-footer unb-align-center">
+                    <input type="button" value="<%= t('editor.tools.insert.media.button') %>" data-unb-editor-key="<%= editor.key %>" data-unb-editor-insert-media-button>
+                </div>
+            </dialog>
+        <% } %>
+
+        <% if (editor.enabledTools['insert.gif']) { %>
+            <dialog class="unb-modal" id="unb-modal-insert-gif" data-unb-editor-key="<%= editor.key %>" data-unb-width="600" data-unb-dialog-modal data-unb-editor-insert-gif-modal open>
+                <div class="unb-modal-header unb-modal-header-grid">
+                    <div><%= t('editor.tools.insert.gif.modal.title') %></div>
+                    <div class="unb-align-right">
+                        <a href="#" data-unb-modal-close><i class="fa-solid fa-xmark"></i></a>
+                    </div>
+                </div>
+                <div class="unb-modal-body">
+                    <div class="unb-editor-gif-grid" data-unb-editor-insert-gif-grid></div>
+                </div>
+                <div class="unb-modal-footer">
+                    <div class="unb-float-form-field">
+                        <input type="search" placeholder=" " data-unb-editor-insert-gif-search-field>
+                        <label><%= t('editor.tools.insert.gif.search.placeholder') %></label>
+                    </div>
+                </div>
+            </dialog>
+        <% } %>
+
+        <% if (editor.enabledTools['insert.emoji']) { %>
+            <dialog class="unb-modal" id="unb-modal-insert-emoji" data-unb-editor-key="<%= editor.key %>" data-unb-width="700" data-unb-dialog-modal data-unb-editor-insert-emoji-modal open>
+                <div class="unb-modal-header unb-modal-header-grid">
+                    <div><%= t('editor.tools.insert.emoji.modal.title') %></div>
+                    <div class="unb-align-right">
+                        <a href="#" data-unb-modal-close><i class="fa-solid fa-xmark"></i></a>
+                    </div>
+                </div>
+                <div class="unb-modal-body unb-modal-scroller unb-editor-emoji-grid" data-unb-editor-key="<%= editor.key %>" data-unb-editor-insert-emoji-grid></div>
+                <div class="unb-modal-footer">
+                    <div class="unb-form-group">
+                        <div class="unb-float-form-field">
+                            <input type="search" placeholder=" " data-unb-editor-insert-emoji-search-field>
+                            <label><%= t('editor.tools.insert.emoji.search.placeholder') %></label>
+                        </div>
+                    </div>
+                    <div class="unb-form-group">
+                        <div class="unb-float-form-field">
+                            <div class="unb-editor-emoji-filter-grid">
+                                <div class="unb-editor-emoji-filter-inner-grid">
+                                    <div class="unb-editor-emoji-filter-title"><%= t('editor.tools.insert.emoji.modal.group') %></div>
+                                    <select data-unb-role="group"></select>
+                                </div>
+                                <div class="unb-editor-emoji-filter-inner-grid">
+                                    <div class="unb-editor-emoji-filter-title"><%= t('editor.tools.insert.emoji.modal.subgroup') %></div>
+                                    <select data-unb-role="subgroup"></select>
+                                </div>
+                                <div class="unb-editor-emoji-filter-inner-grid">
+                                    <div class="unb-editor-emoji-filter-title"><%= t('editor.tools.insert.emoji.modal.tone') %></div>
+                                    <select data-unb-role="tone">
+                                        <option value="default" selected><%= t('common.default') %></option>
+                                        <option value="light"><%= t('editor.tools.insert.emoji.modal.tone.light') %></option>
+                                        <option value="mediumLight"><%= t('editor.tools.insert.emoji.modal.tone.medium.light') %></option>
+                                        <option value="mediumDark"><%= t('editor.tools.insert.emoji.modal.tone.medium.dark') %></option>
+                                        <option value="dark"><%= t('editor.tools.insert.emoji.modal.tone.dark') %></option>
+                                    </select>
+                                </div>
+                                <div class="unb-editor-emoji-reset">
+                                    <a href="#" data-unb-editor-insert-emoji-reset><i class="fa-solid fa-arrow-rotate-left"></i><%= t('editor.tools.insert.emoji.modal.reset') %></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </dialog>
+        <% } %>
+
+        <% if (editor.enabledTools['insert.code']) { %>
+            <dialog class="unb-modal" id="unb-modal-insert-code" data-unb-editor-key="<%= editor.key %>" data-unb-editor-insert-code-modal open>
+                <div class="unb-modal-header unb-modal-header-grid">
+                    <div><%= t('editor.tools.insert.code.modal.title') %></div>
+                    <div class="unb-align-right">
+                        <a href="#" data-unb-modal-close><i class="fa-solid fa-xmark"></i></a>
+                    </div>
+                </div>
+                <div class="unb-modal-body">
+                    <div class="unb-form-group">
+                        <textarea class="unb-editor-code-box" data-unb-role="code"></textarea>
+                    </div>
+                    <div class="unb-form-group">
+                        <div class="unb-float-form-field">
+                            <select data-unb-role="language">
+                                <option value="autodetect" selected><%= t('editor.tools.insert.code.modal.auto.detect') %></option>
+                                <% editor.languages.forEach(language => { %>
+                                    <option value="<%= language.value %>"><%= t(language.localeKey) %></option>
+                                <% }) %>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="unb-form-group hidden" data-unb-role="detected"></div>
+                </div>
+                <div class="unb-modal-footer unb-align-center">
+                    <input type="button" value="<%= t('editor.tools.insert.code.modal.button') %>" data-unb-role="insert">
+                </div>
+            </dialog>
+        <% } %>
+    </div>
+    <input type="hidden" name="content" id="post-content">
+</div>

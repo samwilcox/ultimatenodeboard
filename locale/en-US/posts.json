@@ -1,0 +1,7 @@
+{
+    "total.posts.singular": "<strong>{total}</strong> post",
+    "total.posts.plural": "<strong>{total}</strong> posts",
+    "total.posters.singular": "<strong>{total}</strong> poster",
+    "total.posters.plural": "<strong>{total}</strong> posters",
+    "posted": "Posted {timestamp}"
+}

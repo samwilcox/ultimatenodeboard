@@ -1,0 +1,104 @@
+/* ============================= */
+/* GitHub Dark — Scoped */
+/* Applies when .dark-mode exists */
+/* ============================= */
+
+.dark-mode pre code.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 1em;
+}
+
+.dark-mode code.hljs {
+  padding: 3px 5px;
+}
+
+.dark-mode .hljs {
+  color: #c9d1d9;
+  background: transparent;
+}
+
+.dark-mode .hljs-doctag,
+.dark-mode .hljs-keyword,
+.dark-mode .hljs-meta .hljs-keyword,
+.dark-mode .hljs-template-tag,
+.dark-mode .hljs-template-variable,
+.dark-mode .hljs-type,
+.dark-mode .hljs-variable.language_ {
+  color: #ff7b72;
+}
+
+.dark-mode .hljs-title,
+.dark-mode .hljs-title.class_,
+.dark-mode .hljs-title.class_.inherited__,
+.dark-mode .hljs-title.function_ {
+  color: #d2a8ff;
+}
+
+.dark-mode .hljs-attr,
+.dark-mode .hljs-attribute,
+.dark-mode .hljs-literal,
+.dark-mode .hljs-meta,
+.dark-mode .hljs-number,
+.dark-mode .hljs-operator,
+.dark-mode .hljs-variable,
+.dark-mode .hljs-selector-attr,
+.dark-mode .hljs-selector-class,
+.dark-mode .hljs-selector-id {
+  color: #79c0ff;
+}
+
+.dark-mode .hljs-regexp,
+.dark-mode .hljs-string,
+.dark-mode .hljs-meta .hljs-string {
+  color: #a5d6ff;
+}
+
+.dark-mode .hljs-built_in,
+.dark-mode .hljs-symbol {
+  color: #ffa657;
+}
+
+.dark-mode .hljs-comment,
+.dark-mode .hljs-code,
+.dark-mode .hljs-formula {
+  color: #8b949e;
+}
+
+.dark-mode .hljs-name,
+.dark-mode .hljs-quote,
+.dark-mode .hljs-selector-tag,
+.dark-mode .hljs-selector-pseudo {
+  color: #7ee787;
+}
+
+.dark-mode .hljs-subst {
+  color: #c9d1d9;
+}
+
+.dark-mode .hljs-section {
+  color: #1f6feb;
+  font-weight: bold;
+}
+
+.dark-mode .hljs-bullet {
+  color: #f2cc60;
+}
+
+.dark-mode .hljs-emphasis {
+  font-style: italic;
+}
+
+.dark-mode .hljs-strong {
+  font-weight: bold;
+}
+
+.dark-mode .hljs-addition {
+  color: #aff5b4;
+  background-color: #033a16;
+}
+
+.dark-mode .hljs-deletion {
+  color: #ffdcd7;
+  background-color: #67060c;
+}

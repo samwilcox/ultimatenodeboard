@@ -1,0 +1,55 @@
+<% if (post.gap.insert) { %>
+    <%- include('./post-divider.ejs', { gap }) %>
+<% } %>
+<div class="unb-vertical-timeline">
+    <div class="unb-vertical-timeline-left">
+        <div class="unb-vertical-timeline-line">&nbsp;</div>
+        <div class="unb-vertical-timeline-photo-inner">
+            <% if (!post.author.guest) { %>
+                <div class="unb-vertical-timeline-author-online-status <% if (post.author.online) { %>online<% } else { %>offline<% } %> tooltip tooltip--top" data-title="<% if (post.author.online) { %><%= post.t('common.online') %><% } else { %><%= post.t('common.offline') %><% } %>">&nbsp;</div>
+            <% } %>
+        </div>
+        <div class="unb-vertical-timeline-photo">
+            <%- post.author.photo %>
+        </div>
+    </div>
+    <div>
+        <div class="unb-vertical-timeline-content-grid">
+            <div>
+                <div class="unb-vertical-timeline-meta-grid">
+                    <div>
+                        <div class="unb-vertical-timeline-auto-col">
+                            <div class="unb-vertical-timeline-author"><%- post.author.link %></div>
+                            <div class="unb-">
+                                <% post.author.groups.forEach(badge => { %>
+                                    <%- include('../components/group-badge.ejs', { badge }) %>
+                                <% }) %>
+                            </div>
+                            <div class="unb-vertical-timeline-timestamp"><i class="fa-regular fa-clock"></i><%- post.posted %></div>
+                        </div>
+                    </div>
+                    <div class="unb-align-right unb-vertical-timeline-post-number"><a href="">#1</a></div>
+                </div>
+            </div>
+            <div class="unb-vertical-timeline-content"><%- post.content %></div>
+            <div>
+                <div class="unb-vertical-timeline-bottom-grid">
+                    <div></div>
+                    <div class="unb-align-right">
+                        <div class="unb-vertical-timeline-bottom-options-grid">
+                            <div data-unb-like-button-wrapper data-unb-like-content-type="post" data-unb-content-key="<%= post.postKey %>">
+                                <%- include('../likes/button.ejs', { button: post.likeButton }) %>
+                            </div>
+                            <div class="unb-vertical-timeline-options">
+                                <a href="#"><i class="fa-solid fa-quote-right"></i></a>
+                                <a href="#"><i class="fa-solid fa-ellipsis-vertical"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="unb-vertical-timeline-divider"></div>
+            <div></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+<% if (emphasize || parentCssClasses) { %>
+    <span class="<% if (emphasize) { %>emph<% } %><% if (parentCssClasses) { %> <%= parentCssClasses.join(' ') %><% } %>">
+<% } %>
+<% if (separator) { %>
+    <%= separator %>
+<% } %>
+<a
+    href="<%= js ? '#' : url %>"
+    <% if (Array.isArray(cssClasses) && cssClasses.length) { %>
+        class="<%= cssClasses.join(' ') %>"
+    <% } %>
+    <% if (target) { %>target="_<%= target %>"<% } %>
+
+    <% if (data && typeof data === 'object') { %>
+        <% for (var key in data) { %>
+            <% if (data[key] !== undefined && data[key] !== null) { %>
+            data-<%= String(key).toLowerCase().replace(/[^a-z0-9\-]/g, '') %>="<%= String(data[key]) %>"
+            <% } %>
+        <% } %>
+    <% } %>
+
+    <% if (js) { %>data-js="true"<% } %>
+
+    <%
+        /*
+            jsText:
+            Trusted, server-generated attribute fragment only.
+            MUST NOT contain user or localization input.
+            Example: data-action="open-modal"
+        */
+    %>
+    <% if (js && jsText) { %>
+        <%- jsText %>
+    <% } %>
+
+    <% if (emphasize || color || onHoverColor) { %>
+        style="
+            <% if (emphasize) { %>font-weight:bold;<% } %>
+            <% if (color) { %>--link-color:<%= color %>;<% } %>
+            <% if (onHoverColor) { %>--link-hover-color:<%= onHoverColor %>;<% } %>
+        "
+    <% } %>
+    <% if (dataTags) { %>
+        <%= dataTags.join(' ') %>
+    <% } %>
+>
+    <%= icon %>
+    <%= title %>
+    <%= trailingIcon %>
+</a>
+<% if (emphasize || parentCssClasses) { %>
+    </span>
+<% } %>

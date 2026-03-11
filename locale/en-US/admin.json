@@ -1,0 +1,22 @@
+{
+    "page.title": "UNB Administrator Control Panel [{title}]",
+    "menu.general": "General",
+    "menu.members": "Members",
+    "menu.permissions": "Permissions",
+    "menu.groups": "Groups",
+    "menu.forums": "Forums",
+    "menu.themes": "Themes",
+    "menu.languages": "Languages",
+    "menu.performance": "Performance",
+    "menu.security": "Security",
+    "menu.logs": "Logs",
+    "menu.plugins": "Plugins",
+    "menu.support": "Support",
+    "submenu.overview": "Overview",
+    "submenu.overview.dashboard": "Dashboard",
+    "submenu.forums": "Forums",
+    "submenu.forums.forums": "Forums",
+    "page.title.forums": "Forums",
+    "button.createforum": "Create Forum",
+    "page.title.createforum": "Create Forum"
+}

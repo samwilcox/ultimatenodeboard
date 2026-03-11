@@ -1,0 +1,399 @@
+form {
+    margin: 0;
+    padding: 0;
+}
+
+input, select, textarea, button {
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--text-primary);
+    box-sizing: border-box;
+}
+
+input[type="color"] {
+    border-radius: 6px;
+    outline: none;
+    border: 1px solid var(--clr-surface-a40);
+}
+
+.unb-form-group {
+    margin-bottom: 16px;
+}
+
+.unb-form-group:last-child {
+    margin-bottom: 0;
+}
+
+.unb-float-form-field {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.unb-float-form-field input.margin {
+    padding-left: 38px;
+}
+
+.unb-float-form-field input {
+    width: 100%;
+    padding: 14px;
+    background: var(--clr-surface-a0);
+    border: 2px solid var(--clr-surface-a40);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.unb-float-form-field-icon {
+    position: absolute;
+    top: 50%;
+    left: 14px;
+    transform: translateY(-50%);
+    color: var(--clr-surface-a40);
+    font-size: 16px;
+    pointer-events: none;
+    transition: color 0.2s;
+}
+
+.unb-float-form-field label {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    color: var(--clr-surface-a40);
+    font-size: 14px;
+    pointer-events: none;
+    background: var(--clr-surface-a0);
+    padding: 0 6px;
+    transition: all 0.2s ease;
+}
+
+.unb-float-form-field label.margin {
+    left: 38px;
+}
+
+.unb-float-form-field input:focus + label, .unb-float-form-field input:not(:placeholder-shown) + label {
+    top: 0px;
+    font-size: 12px;
+    color: var(--clr-primary-a0);
+}
+
+.unb-float-form-field input:focus {
+    border-color: var(--clr-primary-a0);
+    box-shadow: 0 0 0 1px var(--clr-surface-tonal-a40);
+}
+
+.unb-float-form-field input:focus ~ .unb-float-form-field-icon {
+    color: var(--clr-primary-a0);
+}
+
+.unb-float-form-field input::placeholder {
+    color: transparent;
+}
+
+.unb-checkbox-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    width: fit-content;
+    gap: 14px;
+}
+
+.unb-checkbox-title {
+    font-weight: 800;
+    font-size: 14px;
+}
+
+.unb-checkbox-info {
+    font-size: 11px;
+}
+
+.unb-checkbox-normal {
+    font-weight: normal;
+}
+
+.unb-checkbox .unb-checkbox {
+    --bg: transparent;
+    --brdr: var(--clr-primary-a0);
+    --brdr-actv: var(--clr-primary-a0);
+    --brdr-hovr: var(--clr-primary-a0);
+    --dur: calc((var(--size, 2)/2) * 0.6s);
+    display: inline-block; 
+    width: calc(var(--size, 1) * 22px);
+    position: relative;
+}
+
+.unb-checkbox .unb-checkbox:after {
+    content: "";
+    width: 100%;
+    padding-top: 100%;
+    display: block;
+}
+
+.unb-checkbox .unb-checkbox > * {
+    position: absolute;
+}
+
+.unb-checkbox .unb-checkbox input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+    background-color: var(--bg);
+    border-radius: calc(var(--size, 1) * 4px);
+    border: calc(var(--newBrdr, var(--size, 1)) * 1px) solid;
+    color: var(--newBrdrClr, var(--brdr));
+    outline: none;
+    margin: 0;
+    padding: 0;
+    transition: all calc(var(--dur) / 3) linear;
+}
+
+.unb-checkbox .unb-checkbox input:hover, .unb-checkbox .unb-checkbox input:checked {
+    --newBrdr: calc(var(--size, 1) * 2);
+}
+
+.unb-checkbox .unb-checkbox input:hover {
+    --newBrdrClr: var(--brdr-hovr);
+}
+
+.unb-checkbox .unb-checkbox input:checked {
+    --newBrdrClr: var(--brdr-actv);
+    transition-delay: calc(var(--dur) /1.3);
+}
+
+.unb-checkbox .unb-checkbox input:checked + svg {
+    --dashArray: 16 93;
+    --dashOffset: 109;
+}
+
+.unb-checkbox .unb-checkbox svg {
+    fill: none;
+    left: 0;
+    pointer-events: none;
+    stroke: var(--stroke, var(--border-active));
+    stroke-dasharray: var(--dashArray, 93);
+    stroke-dashoffset: var(--dashOffset, 94);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2px;
+    top: 0;
+    transition: stroke-dasharray var(--dur), stroke-dashoffset var(--dur);
+}
+
+.unb-checkbox .unb-checkbox svg, .unb-checkbox .unb-checkbox input {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+form .muted {
+    color: var(--text-muted);
+}
+
+input[type="submit"] {
+    border-radius: 8px;
+    padding: 12px 20px;
+    background: var(--clr-primary-a0);
+    color: var(--text-primary-button);
+    font-weight: 700;
+    outline: none;
+    border: none;
+    transition: 0.5s ease all;
+}
+
+input[type="submit"]:hover {
+    cursor: pointer;
+    background-color: var(--clr-primary-a20);
+    transition: 0.5s ease all;
+}
+
+.unb-radio {
+    font-family: arial;
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 13px;
+    padding-top: 0px;
+    cursor: pointer;
+    font-size: 14px;
+}
+    .unb-radio input {
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+    }
+.unb-radio_indicator {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background: var(--text-primary);
+    border: 0px solid var(--clr-surface-a0);
+    border-radius: undefinedpx;
+}
+.unb-radio:hover input ~ .unb-radio_indicator,
+.unb-radio input:focus ~ .unb-radio_indicator {
+    background: var(--text-primary);
+}
+
+.unb-radio input:checked ~ .unb-radio_indicator {
+    background: var(--clr-primary-a20);
+}
+.unb-radio:hover input:not([disabled]):checked ~ .unb-radio_indicator,
+.unb-radio input:checked:focus ~ .unb-radio_indicator {
+    background: var(--clr-surface-tonal-a30);
+}
+.unb-radio input:disabled ~ .unb-radio_indicator {
+    background: var(--clr-surface-tonal-a40);
+    opacity: 0.6;
+    pointer-events: none;
+}
+.unb-radio_indicator:after {
+    box-sizing: unset;
+    content: '';
+    position: absolute;
+    display: none;
+}
+.unb-radio input:checked ~ .unb-radio_indicator:after {
+    display: block;
+}
+.unb-radio-radio .unb-radio_indicator {
+    border-radius: 50%;
+}
+
+.unb-radio-radio .unb-radio_indicator:after {
+    left: 7px;
+    top: 7px;
+    height: 6px;
+    width: 6px;
+    border-radius: 50%;
+    background: var(--text-primary);
+    transition: background 250ms;
+}
+.unb-radio-radio input:disabled ~ .unb-radio_indicator:after {
+    background: var(--clr-surface-tonal-a60);
+}.unb-radio-radio .unb-radio_indicator::before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4.5rem;
+    height: 4.5rem;
+    margin-left: -1.3rem;
+    margin-top: -1.3rem;
+    background: var(--clr-primary-a0);
+    border-radius: 3rem;
+    opacity: 0.6;
+    z-index: 99999;
+    transform: scale(0);
+}
+@keyframes s-ripple {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    20% {
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0.01;
+        transform: scale(1);
+    }
+}
+@keyframes s-ripple-dup {
+    0% {
+        transform: scale(0);
+    }
+    30% {
+        transform: scale(1);
+    }
+    60% {
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1);
+    }
+}
+.unb-radio-radio input + .unb-radio_indicator::before {
+    animation: s-ripple 250ms ease-out;
+}
+.unb-radio-radio input:checked + .unb-radio_indicator::before {
+    animation-name: s-ripple-dup;
+}
+
+.unb-form-tabbing-bar {
+    width: auto;
+    border-radius: 8px 8px 0 0;
+    padding: 10px;
+    background: var(--clr-surface-a10);
+    border-top: 1px solid var(--clr-surface-a30);
+    border-left: 1px solid var(--clr-surface-a30);
+    border-right: 1px solid var(--clr-surface-a30);
+}
+
+.unb-form-section {
+    width: auto;
+    background: var(--clr-surface-a20);
+    padding: 14px;
+    border: 1px solid var(--clr-surface-a30);
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.unb-form-field-bar {
+    width: auto;
+    background: var(--clr-surface-a10);
+    border-left: 1px solid var(--clr-surface-a10);
+    border-right: 1px solid var(--clr-surface-a30);
+    border-top: 1px solid var(--clr-surface-a30);
+    padding: 14px;
+}
+
+.unb-form-field-bar:last-of-type {
+    border-bottom: 1px solid var(--clr-surface-a30);
+}
+
+.unb-form-field-bar:only-child {
+    border-bottom: 1px solid var(--clr-surface-a30);
+}
+
+.unb-form-field-bar-grid {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 20px;
+}
+
+.unb-form-field-bar-grid.centered {
+    align-items: center;
+}
+
+.unb-form-field-bar-grid-field {
+    font-weight: 800;
+    text-align: right;
+}
+
+.unb-form-field-shorter {
+    width: 600px !important;
+}
+
+input[type="submit"], input[type="button"] {
+    border-radius: 8px;
+    padding: 12px 20px;
+    background: var(--clr-primary-a0);
+    color: var(--text-primary-button);
+    font-weight: 700;
+    outline: none;
+    border: none;
+    transition: 0.5s ease all;
+}
+
+input[type="submit"]:hover, input[type="button"]:hover {
+    cursor: pointer;
+    background-color: var(--clr-primary-a20);
+    transition: 0.5s ease all;
+}

@@ -1,0 +1,48 @@
+<div class="unb-drop-down" id="unb-dd-topic-sort" data-dropdown-menu="unb-dd-topic-sort">
+    <span class="unb-drop-down-links">
+        <a href="#" data-unb-sort="latest" data-unb-sort-item><i class="<% if (selects.sort === 'latest') { %>fa-solid fa-circle<% } else { %>fa-regular fa-circle<% } %>" data-unb-sort-topic-latest></i><%= t('sort.latest') %></a>
+        <a href="#" data-unb-sort="top" data-unb-sort-item><i class="<% if (selects.sort === 'top') { %>fa-solid fa-circle<% } else { %>fa-regular fa-circle<% } %>" data-unb-sort-topic-top></i><%= t('sort.top') %></a>
+        <a href="#" data-unb-sort="newest" data-unb-sort-item><i class="<% if (selects.sort === 'newest') { %>fa-solid fa-circle<% } else { %>fa-regular fa-circle<% } %>" data-unb-sort-topic-newest></i><%= t('sort.newest') %></a>
+        <a href="#" data-unb-sort="oldest" data-unb-sort-item><i class="<% if (selects.sort === 'oldest') { %>fa-solid fa-circle<% } else { %>fa-regular fa-circle<% } %>" data-unb-sort-topic-oldest></i><%= t('sort.oldest') %></a>
+        <a href="#" data-unb-sort="likes" data-unb-sort-item><i class="<% if (selects.sort === 'likes') { %>fa-solid fa-circle<% } else { %>fa-regular fa-circle<% } %>" data-unb-sort-topic-likes></i><%= t('sort.likes') %></a>
+    </span>
+</div>
+<div class="unb-drop-down" id="unb-dd-topic-filter" data-dropdown-menu="unb-dd-topic-filter">
+    <span class="unb-drop-down-links">
+        <a href="#" data-unb-filter="all" data-unb-filter-item><i class="<% if (selects.filter === 'all') { %>fa-solid fa-circle<% } else { %>fa-regular fa-circle<% } %>" data-unb-filter-topic-all></i><%= t('filters.all') %></a>
+        <a href="#" data-unb-filter="unread" data-unb-filter-item><i class="<% if (selects.filter === 'unread') { %>fa-solid fa-circle<% } else { %>fa-regular fa-circle<% } %>" data-unb-filter-topic-unread></i><%= t('filters.unread') %></a>
+        <a href="#" data-unb-filter="read" data-unb-filter-item><i class="<% if (selects.filter === 'read') { %>fa-solid fa-circle<% } else { %>fa-regular fa-circle<% } %>" data-unb-filter-topic-read></i><%= t('filters.read') %></a>
+        <a href="#" data-unb-filter="answered" data-unb-filter-item><i class="<% if (selects.filter === 'answered') { %>fa-solid fa-circle<% } else { %>fa-regular fa-circle<% } %>" data-unb-filter-topic-answered></i><%= t('filters.answered') %></a>
+        <a href="#" data-unb-filter="unanswered" data-unb-filter-item><i class="<% if (selects.filter === 'unanswered') { %>fa-solid fa-circle<% } else { %>fa-regular fa-circle<% } %>" data-unb-filter-topic-unanswered></i><%= t('filters.unanswered') %></a>
+        <a href="#" data-unb-filter="hot" data-unb-filter-item><i class="<% if (selects.filter === 'hot') { %>fa-solid fa-circle<% } else { %>fa-regular fa-circle<% } %>" data-unb-filter-topic-hot></i><%= t('filters.hot') %></a>
+        <a href="#" data-unb-filter="pinned" data-unb-filter-item><i class="<% if (selects.filter === 'pinned') { %>fa-solid fa-circle<% } else { %>fa-regular fa-circle<% } %>" data-unb-filter-topic-pinned></i><%= t('filters.pinned') %></a>
+        <a href="#" data-unb-filter="unpinned" data-unb-filter-item><i class="<% if (selects.filter === 'unpinned') { %>fa-solid fa-circle<% } else { %>fa-regular fa-circle<% } %>" data-unb-filter-topic-unpinned></i><%= t('filters.unpinned') %></a>
+        <a href="#" data-unb-filter="locked" data-unb-filter-item><i class="<% if (selects.filter === 'locked') { %>fa-solid fa-circle<% } else { %>fa-regular fa-circle<% } %>" data-unb-filter-topic-locked></i><%= t('filters.locked') %></a>
+        <a href="#" data-unb-filter="unlocked" data-unb-filter-item><i class="<% if (selects.filter === 'unlocked') { %>fa-solid fa-circle<% } else { %>fa-regular fa-circle<% } %>" data-unb-filter-topic-unlocked></i><%= t('filters.unlocked') %></a>
+    </span>
+</div>
+<div class="unb-left-grid">
+    <div class="unb-left-row-grid">
+        <div class="unb-primary-button">
+            <a href="" class="stretch"><i class="fa-solid fa-pen-to-square"></i><%= t('global.start.discussion.link') %></a>
+        </div>
+        <div>One</div>
+        <div>
+            <%- include('../partials/components/forum-list.ejs', { forums }) %>
+        </div>
+    </div>
+    <div>
+        <span class="unb-select-button">
+            <span data-unb-filter-button>
+                <a href="#" class="dropdown-toggle" data-dropdown="unb-dd-topic-filter"><span data-role="select"><%= selects.button.filter %></span><i class="fa-solid fa-caret-down"></i></a>
+            </span>
+            <span class="unb-left-margin" data-unb-sort-button>
+                <a href="#" class="dropdown-toggle" data-dropdown="unb-dd-topic-sort"><span data-role="select"><%= selects.button.sort %></span><i class="fa-solid fa-caret-down"></i></a>
+            </span>
+        </span>
+        <div class="unb-content-container" data-unb-content-container></div>
+        <div class="unb-load-more" data-unb-load-more>
+            <a href="#" data-unb-load-more-button><%= t('common.loadMore') %></a>
+        </div>
+    </div>
+</div>

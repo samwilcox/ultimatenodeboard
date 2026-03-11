@@ -1,0 +1,35 @@
+<div class="unb-page-title-bar unb-page-title-bar-grid">
+    <div class="unb-page-title-bar-text"><%= t('admin.page.title.createforum') %></div>
+    <div></div>
+</div>
+<form name="createforum" id="unb-createforum" action="" method="post" enctype="application/x-www-form-urlencoded" data-unb-create-forum-form>
+    <div class="unb-form-tabbing-bar">
+        <span class="selected"><a href="#">Forum Settings</a></span>
+        <span><a href="#">Customization</a></span>
+        <span><a href="#">Permissions</a></span>
+        <span><a href="#">Topics & Posts</a></span>
+    </div>
+    <div class="unb-form-section">Forum Settings</div>
+    <div class="unb-form-field-bar">
+        <div class="unb-form-field-bar-grid centered">
+            <div class="unb-form-field-bar-grid-field">Title</div>
+            <div class="unb-float-form-field">
+                <input type="text" data-unb-role="title" class="unb-form-field-shorter">
+            </div>
+        </div>
+    </div>
+    <div class="unb-form-field-bar">
+        <div class="unb-form-field-bar-grid">
+            <div class="unb-form-field-bar-grid-field">Description</div>
+            <div>
+                <%- editor %>
+            </div>
+        </div>
+    </div>
+    <div class="unb-form-field-bar">
+        <div class="unb-form-field-bar-grid">
+            <div class="unb-form-field-bar-grid-field">Type</div>
+            <div>Here</div>
+        </div>
+    </div>
+</form>

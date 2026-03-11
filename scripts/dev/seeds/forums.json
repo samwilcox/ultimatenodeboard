@@ -1,0 +1,181 @@
+[
+  {
+    "key": "forum_mmlnzzyj_Tyefjw",
+    "title": "General Discussion",
+    "description": "General chit chat section.",
+    "sortOrder": 0,
+    "visible": true,
+    "color": {
+      "light": { "bg": "#4CAF50", "text": "#FFFFFF" },
+      "dark": { "bg": "#81C784", "text": "#000000" }
+    },
+    "icon": "fa-solid fa-rocket",
+    "archived": false,
+    "parentKey": null,
+    "displayChildForums": true,
+    "childForums": null,
+    "forumType": "normal"
+  },
+
+  {
+    "key": "forum_mmlnzzyj_Tyefjq",
+    "title": "Cafe On The Corner",
+    "description": "Come on in and have a cup of coffee or any other item on the menu.",
+    "sortOrder": 1,
+    "visible": true,
+    "color": {
+      "light": { "bg": "#795548", "text": "#FFFFFF" },
+      "dark": { "bg": "#A1887F", "text": "#000000" }
+    },
+    "icon": "fa-solid fa-mug-saucer",
+    "archived": false,
+    "parentKey": null,
+    "displayChildForums": true,
+    "childForums": null,
+    "forumType": "normal"
+  },
+
+  {
+    "key": "forum_mmlnzzyj_Tyefki",
+    "title": "The Q&A Zone",
+    "description": "The question and answer forum. Come ask your question and get a solution!",
+    "sortOrder": 2,
+    "visible": true,
+    "color": {
+      "light": { "bg": "#2196F3", "text": "#FFFFFF" },
+      "dark": { "bg": "#64B5F6", "text": "#000000" }
+    },
+    "icon": "fa-solid fa-circle-question",
+    "archived": false,
+    "parentKey": null,
+    "displayChildForums": true,
+    "childForums": null,
+    "forumType": "qa"
+  },
+
+  {
+    "key": "forum_mmlnzzyj_Ayefjw",
+    "title": "A Parent Forum",
+    "description": "This forum is the mockup for a forum that has a children.",
+    "sortOrder": 3,
+    "visible": true,
+    "color": {
+      "light": { "bg": "#9C27B0", "text": "#FFFFFF" },
+      "dark": { "bg": "#CE93D8", "text": "#000000" }
+    },
+    "icon": "fa-solid fa-hands-holding-child",
+    "archived": false,
+    "parentKey": null,
+    "displayChildForums": true,
+    "childForums": ["forum_mmlnzzyj_Yyefjw", "forum_mmlnzzyj_Gyefjw"],
+    "forumType": "normal"
+  },
+
+  {
+    "key": "forum_mmlnzzyj_Yyefjw",
+    "title": "A Child Forum",
+    "description": "This forum is the mockup for a child forum.",
+    "sortOrder": 0,
+    "visible": true,
+    "color": {
+      "light": { "bg": "#FF9800", "text": "#FFFFFF" },
+      "dark": { "bg": "#FFB74D", "text": "#000000" }
+    },
+    "icon": "fa-solid fa-child",
+    "archived": false,
+    "parentKey": "forum_mmlnzzyj_Ayefjw",
+    "displayChildForums": true,
+    "childForums": null,
+    "forumType": "normal"
+  },
+
+  {
+    "key": "forum_mmlnzzyj_Gyefjw",
+    "title": "Another Child Forum",
+    "description": "This forum is the mockup for a second child forum.",
+    "sortOrder": 1,
+    "visible": true,
+    "color": {
+      "light": { "bg": "#009688", "text": "#FFFFFF" },
+      "dark": { "bg": "#80CBC4", "text": "#000000" }
+    },
+    "icon": "fa-solid fa-rocket",
+    "archived": false,
+    "parentKey": "forum_mmlnzzyj_Ayefjw",
+    "displayChildForums": true,
+    "childForums": null,
+    "forumType": "normal"
+  },
+
+  {
+    "key": "forum_mmlnzzyj_Fyefjw",
+    "title": "Tutorials And More",
+    "description": "A forum that has tutorials and other offerings - check it out.",
+    "sortOrder": 4,
+    "visible": true,
+    "color": {
+      "light": { "bg": "#3F51B5", "text": "#FFFFFF" },
+      "dark": { "bg": "#9FA8DA", "text": "#000000" }
+    },
+    "icon": "fa-brands fa-readme",
+    "archived": false,
+    "parentKey": null,
+    "displayChildForums": true,
+    "childForums": null,
+    "forumType": "normal"
+  },
+
+  {
+    "key": "forum_mmlnzzyj_Uyefjw",
+    "title": "The Developers Corner",
+    "description": "This forum is the shoutout to all the developers out there.",
+    "sortOrder": 5,
+    "visible": true,
+    "color": {
+      "light": { "bg": "#607D8B", "text": "#FFFFFF" },
+      "dark": { "bg": "#B0BEC5", "text": "#000000" }
+    },
+    "icon": "fa-solid fa-code",
+    "archived": false,
+    "parentKey": null,
+    "displayChildForums": true,
+    "childForums": null,
+    "forumType": "normal"
+  },
+
+  {
+    "key": "forum_mmlnzzyj_Ieefjw",
+    "title": "A Archived Forum",
+    "description": "This forum has been archived. Thats right - read only.",
+    "sortOrder": 6,
+    "visible": true,
+    "color": {
+      "light": { "bg": "#9E9E9E", "text": "#FFFFFF" },
+      "dark": { "bg": "#E0E0E0", "text": "#000000" }
+    },
+    "icon": "fa-solid fa-box-archive",
+    "archived": true,
+    "parentKey": null,
+    "displayChildForums": true,
+    "childForums": null,
+    "forumType": "normal"
+  },
+
+  {
+    "key": "forum_mmlnzzyj_Aoefjw",
+    "title": "A Hidden Forum",
+    "description": "No one can see this forum - unless your an admin...",
+    "sortOrder": 7,
+    "visible": false,
+    "color": {
+      "light": { "bg": "#E91E63", "text": "#FFFFFF" },
+      "dark": { "bg": "#F48FB1", "text": "#000000" }
+    },
+    "icon": "fa-solid fa-user-secret",
+    "archived": false,
+    "parentKey": null,
+    "displayChildForums": true,
+    "childForums": null,
+    "forumType": "normal"
+  }
+]

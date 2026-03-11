@@ -1,0 +1,113 @@
+<script>
+    UNB.on('ui.init', () => {
+        UNB.posts.infiniteScroll.init(
+            '<%= topic.key %>',
+            '[data-unb-posts-container]'
+        );
+    });
+
+    window.UNB_TOPIC = {
+        topicKey: '<%= topic.key %>',
+        maxPosts: <%= maxPosts %>
+    };
+</script>
+<%- include('../partials/likes/modal.ejs', { modal }) %>
+<div class="unb-page-title-bar">
+    <div class="unb-horizontal-grid centered">
+        <div>
+            <div class="unb-page-title-row-grid">
+                <div class="unb-page-title"><%- topic.title %></div>
+                <div class="unb-forum-bubbles">
+                    <% if (themeMode === 'light') { %>
+                        <% var textColor = forum.color.light.text %>
+                        <% var bgColor = forum.color.light.bg %>
+                        <% var hoverTextColor = colors.light.text %>
+                        <% var hoverBgColor = colors.light.background %>
+                    <% } else { %>
+                        <% var textColor = forum.color.dark.text %>
+                        <% var bgColor = forum.color.dark.bg %>
+                        <% var hoverTextColor = colors.dark.text %>
+                        <% var hoverBgColor = colors.dark.background %>
+                    <% } %>
+                    <span class="unb-forum-bubble-topic emphasize" style="--forum-text: <%= textColor %>; --forum-bg: <%= bgColor %>; --forum-text-hover: <%= hoverTextColor %>; --forum-bg-hover: <%= hoverBgColor %>;">
+                        <a href="<%= _urls.forum %>"><% if (forum.icon) { %><i class="<%- forum.icon %>"></i><% } %><%- forum.title %></a>
+                    </span>
+                    <% if (topic.pinned) { %>
+                        <span class="unb-bubble-for-topic emphasize"><i class="fa-solid fa-thumbtack"></i><%= t('topics.view.builder.bubble.tooltip.pinned') %></span>
+                    <% } %>
+                    <% if (topic.locked) { %>
+                        <span class="unb-bubble-for-topic emphasize"><i class="fa-solid fa-lock"></i><%= t('topics.view.builder.bubble.tooltip.locked') %></span>
+                    <% } %>
+                    <% if (bubbles.hot) { %>
+                        <span class="unb-bubble-for-topic emphasize"><i class="fa-solid fa-fire"></i><%= t('topics.bubble.hot') %></span>
+                    <% } %>
+                    <span class="unb-bubble-for-topic"><%- locales.totalPosts %></span>
+                    <span class="unb-bubble-for-topic"><%- locales.totalPosters %></span>
+                    <span class="unb-bubble-for-topic"><%- locales.totalViews %></span>
+                    <% if (tags.haveTags) { %>
+                        <% var bTags = null %>
+                        <% var rTags = null %>
+                        <% if (tags.truncated.brief.length > 0) { %>
+                            <% bTags = tags.truncated.brief %>
+                            <% if (tags.truncated.remaining.length > 0) { %>
+                                <%rTags = tags.truncated.remaining %>
+                            <% } %>
+                        <% } else { %>
+                            <% if (tags.truncated.remaining.length > 0) { %>
+                                <% rTags = tags.truncated.remaining %>
+                            <% } %>
+                        <% } %>
+                        <% if (bTags) { %>
+                            <% bTags.forEach(bTag => { %>
+                                <% var bUrl = tags.urls?.find(t => t.key === bTag.key)?.url %>
+                                <span class="unb-tag-badge"><a href="<%= bUrl %>"><i class="fa-solid fa-tag"></i><%- bTag.name %></a></span>
+                            <% }) %>
+                        <% } %>
+                        <% if (rTags) { %>
+                            <div class="unb-drop-down" id="unb-dd-tags" data-dropdown-menu="unb-dd-tags">
+                                <span class="unb-drop-down-links">
+                                    <% rTags.forEach(rTag => { %>
+                                        <% var rUrl = tags.urls?.find(t => t.key === rTag.key)?.url %>
+                                        <a href="<%= rUrl %>"><i class="fa-solid fa-tag"></i><%- rTag.name %></a>
+                                    <% }) %>
+                                </span>
+                            </div>
+                            <span class="unb-tag-badge tooltip tooltip--top" data-title="<%= t('topics.more.tags.tooltip') %>"><a href="#" class="dropdown-toggle" data-dropdown="unb-dd-tags"><i class="fa-solid fa-tag"></i><i class="fa-solid fa-angle-down"></i></a></span>
+                        <% } %>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+        <div class="unb-align-right">
+            <div class="unb-side-by-side">
+                <div>
+                    <div class="unb-side-by-side-grid">
+                        <div class="unb-topic-creator-name"><%- rendered.creator.link %></div>
+                        <div class="unb-topic-creator-timestamp"><%- rendered.createdAt %></div>
+                    </div>
+                </div>
+                <div><%- rendered.creator.photo %></div>
+            </div>
+        </div>
+    </div>
+</div>
+<% if (sidebar.posts.enabled) { %>
+    <% if (sidebar.posts.position === 'left') { %>
+        <div class="unb-posts-with-left-sidebar">
+            <div>
+                <%- include('../partials/components/posts-scroller.ejs', {}) %>
+            </div>
+    <% } else { %>
+        <div class="unb-posts-with-right-sidebar">
+    <% } %>
+<% } %>
+<div data-unb-posts-container></div>
+<% if (sidebar.posts.enabled) { %>
+    <% if (sidebar.posts.position === 'right') { %>
+        <div>
+            <%- include('../partials/components/posts-scroller.ejs', {}) %>
+        </div>
+        </div>
+    <% } %>
+<% } %>
+<%- include('../partials/posts/post-end.ejs', {}) %>

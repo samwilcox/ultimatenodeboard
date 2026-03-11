@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html<% if (themeMode === 'dark') { %> class="dark-mode"<% } %>>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="robots" content="noindex">
+        <% if (csrf?.enabled && csrf?.token) { %>
+            <meta name="csrf-token" content="<%= csrf.token %>">
+            <script>
+                window.UNB_CSRF_TOKEN = "<%= csrf.token %>";
+            </script>
+        <% } %>
+        <title><%- site.title %></title>
+
+        <script>
+            (function () {
+                try {
+                var mode = localStorage.getItem('unb.theme.mode');
+                if (mode === 'dark') {
+                    document.documentElement.classList.add('dark-mode');
+                }
+                } catch (e) {}
+            })();
+        </script>
+
+        <link rel="stylesheet" href="<%= urls.base %>/public/fontawesome/css/all.min.css">
+        <link rel="stylesheet" href="<%= memberConfig.themeCssUrl %>/dist/unb-default.css">
+
+        <script>
+            window.UNB_BOOTSTRAP = {
+                urls: {
+                    base: "<%= urls.base %>",
+                    api: "<%= urls.base %>/api"
+                },
+                locale: {
+                    editor: {
+                        quote: "<%= t('editor.tools.insert.quote.blockquote') %>",
+                        spoiler: "<%= t('editor.tools.insert.spoiler.blockquote') %>"
+                    }
+                }
+            };
+        </script>
+
+        <script src="<%= memberConfig.themeJsUrl %>/dist/unb-ui.js"></script>
+    </head>
+    <body>
+        <% if (!member.signedIn && authError) { %>
+            <span data-unb-auth-form-error></span>
+        <% } %>
+
+        <template class="unb-ajax-loader" id="unb-ajax-loader"><img src="<%= urls.assets %>/loaders/loader.gif" alt="*"></template>
+        <div id="unb-background-disabler" data-unb-modal-overlay></div>
+        <%- include('./partials/auth/signin-form.ejs', { auth: authForm }) %>
+        <span class="unb-toggle unb-toggles-container">
+            <a href="#" class="tooltip tooltip--left dropdown-toggle" data-dropdown="unb-dd-languages" data-title="<%= t('global.toggle.language') %>"><i class="fa-solid fa-language"></i></a>
+            <a href="#" class="tooltip tooltip--left dropdown-toggle" data-dropdown="unb-dd-themes" data-title="<%= t('global.toggle.theme') %>"><i class="fa-solid fa-paintbrush"></i></a>
+            <a href="#" class="tooltip tooltip--left" data-title="<%= t('global.toggle.dark.mode') %>" data-theme-mode-toggle><i class="fa-solid fa-moon" id="unb-theme-mode-toggle"></i></a>
+        </span>
+        <% if (permissions.features.access) { %>
+            <div class="unb-drop-down" id="unb-dd-features" data-dropdown-menu="unb-dd-features">
+            <span class="unb-drop-down-links">
+                <% if (permissions.features.members) { %>
+                    <a href=""><i class="fa-solid fa-user"></i><%= t('global.features.members') %></a>
+                <% } %>
+                <% if (permissions.features.whosOnline) { %>
+                    <a href=""><i class="fa-solid fa-earth-americas"></i><%= t('global.features.whos.online') %></a>
+                <% } %>
+                <% if (permissions.features.search) { %>
+                    <a href=""><i class="fa-solid fa-magnifying-glass"></i><%= t('global.features.search') %></a>
+                <% } %>
+                <% if (permissions.features.tags) { %>
+                    <a href=""><i class="fa-solid fa-tag"></i><%= t('global.features.tags') %></a>
+                <% } %>
+                <% if (permissions.features.groups) { %>
+                    <a href=""><i class="fa-solid fa-user-group"></i><%= t('global.features.groups') %></a>
+                <% } %>
+                <% if (permissions.features.retroactiveTimeline) { %>
+                    <a href=""><i class="fa-solid fa-timeline"></i><%= t('global.features.retroactive.timeline') %></a>
+                <% } %>
+                <% if (permissions.features.cookieManagement) { %>
+                    <a href=""><i class="fa-solid fa-cookie"></i><%= t('global.features.cookie.management') %></a>
+                <% } %>
+                <% if (permissions.features.help) { %>
+                    <a href=""><i class="fa-solid fa-life-ring"></i><%= t('global.features.help') %></a>
+                <% } %>
+            </span>
+        </div>
+        <% } %>
+        <div class="unb-drop-down" id="unb-dd-legal" data-dropdown-menu="unb-dd-legal">
+            <span class="unb-drop-down-links">
+                <a href=""><i class="fa-regular fa-file-lines"></i><%= t('global.legal.terms') %></a>
+                <a href=""><i class="fa-solid fa-user-lock"></i><%= t('global.legal.privacy.policy') %></a>
+                <a href=""><i class="fa-regular fa-paper-plane"></i><%= t('global.legal.contact.us') %></a>
+            </span>
+        </div>
+        <div class="unb-drop-down" id="unb-dd-languages" data-dropdown-menu="unb-dd-languages">
+            <span class="unb-drop-down-links">
+                <% languages.forEach(language => { %>
+                    <a href="<%= language.url %>"><% if (language.selected) { %><i class="fa-solid fa-circle"></i><% } else { %><i class="fa-regular fa-circle"></i><% } %><%= language.label %></a>
+                <% }) %>
+            </span>
+        </div>
+        <div class="unb-drop-down" id="unb-dd-themes" data-dropdown-menu="unb-dd-themes">
+            <span class="unb-drop-down-links">
+                <% themes.forEach(theme => { %>
+                    <a href="<%= theme.url %>"><% if (theme.selected) { %><i class="fa-solid fa-circle"></i><% } else { %><i class="fa-regular fa-circle"></i><% } %><%= theme.label %></a>
+                <% }) %>
+            </span>
+        </div>
+        <div class="unb-drop-down" id="unb-dd-membermenu" data-dropdown-menu="unb-dd-membermenu">
+            <span class="unb-drop-down-links">
+                <a href="<%= urls.accountSettings %>"><i class="fa-solid fa-sliders"></i><%= t('global.membermenu.accountsettings.link') %></a>
+                <a href="<%= urls.myProfile %>"><i class="fa-solid fa-address-card"></i><%= t('global.membermenu.myprofile.link') %></a>
+                <a href="<%= urls.editProfile %>"><i class="fa-solid fa-user-pen"></i><%= t('global.membermenu.editmyprofile.link') %></a>
+                <a href="<%= urls.bookmarks %>"><i class="fa-solid fa-bookmark"></i><%= t('global.membermenu.bookmarks.link') %></a>
+                <a href="<%= urls.friendsList %>"><i class="fa-solid fa-user-group"></i><%= t('global.membermenu.friendslist.link') %></a>
+                <% if (permissions.adminCP || permissions.moderatorToolbox) { %>
+                    <em></em>
+                    <a href="<%= urls.moderatorToolbox %>"><i class="fa-solid fa-toolbox"></i><%= t('global.membermenu.moderatortoolbox.link') %></a>
+                    <a href="<%= urls.administratorControlPanel %>" target="_blank"><i class="fa-solid fa-screwdriver-wrench"></i><%= t('global.membermenu.administratorcontrolpanel.link') %></a>
+                <% } %>
+                <em></em>
+                <a href="<%= urls.signOut %>"><i class="fa-solid fa-right-from-bracket"></i><%= t('global.membermenu.signout.link') %></a>
+            </span>
+        </div>
+        <header>
+            <div class="unb-center-floater">
+                <div class="grid-a">
+                    <div>
+                        <a href="<%= urls.base %>">
+                            <% if (site.logoType === 'image') { %>
+                                <% let logo = themeMode === 'light' ? site.logo.light : site.logo.dark %>
+                                <img src="<%= urls.assets %>/<%= logo %>" alt="*" data-community-logo>    
+                            <% } else { %>
+                                <%- site.title %>
+                            <% } %>
+                        </a>
+                    </div>
+                    <div class="unb-menu">
+                        <a href="<%= urls.base %>"><%= t('global.home.link') %></a>
+                        <% if (permissions.features.access) { %>
+                            <a href="#" class="dropdown-toggle" data-dropdown="unb-dd-features"><%= t('global.features.link') %><i class="fa-solid fa-caret-down"></i></a>
+                        <% } %>
+                        <a href="#" class="dropdown-toggle" data-dropdown="unb-dd-legal"><%= t('global.legal.link') %><i class="fa-solid fa-caret-down"></i></a>
+                        <% if (permissions.help) { %>
+                            <a href=""><%= t('global.help.link') %></a>
+                        <% } %>
+                    </div>
+                    <div class="unb-search-box-link">
+                        <a href="#"><i class="fa-solid fa-magnifying-glass"></i><%= t('global.search.placeholder') %></a>
+                    </div>
+                    <div>
+                        <% if (member.signedIn) { %>
+                            <div class="unb-member-bar-grid">
+                                <div class="unb-member-options">
+                                    <a href="#"><i class="fa-solid fa-file-shield"></i></a>
+                                    <a href="#"><i class="fa-solid fa-inbox"></i></a>
+                                    <a href="#"><i class="fa-solid fa-bell"></i></a>
+                                </div>
+                                <div class="unb-member-menu-link">
+                                    <a href="#" class="unb-side-by-side dropdown-toggle" data-dropdown="unb-dd-membermenu">
+                                        <span><%- memberInfo.photo %></span>
+                                        <span><%- memberInfo.name %><i class="fa-solid fa-angle-down"></i></span>
+                                    </a>
+                                </div>
+                            </div>
+                        <% } else { %>
+                            <span class="unb-guest-menu">
+                                <% if (settings.signUpEnabled) { %>
+                                    <a href="#"><i class="fa-solid fa-user-plus"></i><%= t('global.signup.link') %></a>
+                                <% } %>
+                                <a href="#" data-unb-modal-open="unb-modal-signin"><i class="fa-solid fa-key"></i><%= t('global.signin.link') %></a>
+                            </span>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="unb-center-floater">
+            <%- body %>
+        </div>
+        <footer>
+            <div class="unb-center-floater">
+                <div class="unb-footer-grid">
+                    <div class="unb-footer-left-grid">
+                        <div><%- parsedLocale.allTimes %></div>
+                        <div><%- parsedLocale.generatedAt %></div>
+                    </div>
+                    <div class="unb-align-right"><%- parsedLocale.poweredBy %></div>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

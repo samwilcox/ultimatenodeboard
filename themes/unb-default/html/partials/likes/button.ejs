@@ -1,0 +1,8 @@
+<div class="unb-like-button-wrapper">
+    <span class="unb-like-button">
+        <a href="#" data-unb-like-button <% if (button.signedIn) { %>data-unb-like-content-type="<%= button.contentType %>" data-unb-like-content-key="<%= button.contentKey %>" data-unb-like-button-action="<% if (button.hasLiked) { %>unlike<% } else { %>like<% } %>"<% } else { %>data-unb-like-guest="true"<% } %>><i class="fa-<% if (button.hasLiked) { %>solid<% } else { %>regular<% } %> fa-thumbs-up"></i><%= button.label %></a>
+    </span>
+    <span class="unb-like-button-badge">
+        <a href="#" data-unb-like-badge data-unb-like-content-type="<%= button.contentType %>" data-unb-like-content-key="<%= button.contentKey %>"><%- button.totalLikes %></a>
+    </span>
+</div>

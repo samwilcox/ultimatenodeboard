@@ -1,0 +1,9 @@
+<% if (url) { %>
+    <a href="<%= url %>"<% if (includeTooltip) { %> class="tooltip tooltip--<%= tooltipPlacement %>" data-title="<%= tooltip %>"<% } %>>
+<% } %>
+    <span class="<% if (type === 'normal') { %>unb-photo<% } else if (type === 'thumbnail') { %>unb-photo-thumbnail<% } else { %>unb-photo-mini<% } %>">
+        <img src="<%= source %>" alt="*">
+    </span>
+<% if (url) { %>
+    </a>
+<% } %>

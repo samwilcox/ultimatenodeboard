@@ -1,0 +1,13 @@
+<div class="unb-forum-list-item">
+    <% if (forums && Array.isArray(forums) && forums.length) { %>
+        <% forums.forEach(forum => { %>
+            <% if (forum.selected || forum.isChild) { %>
+                <span class="<% if (forum.selected) { %>selected<% } %><% if (forum.isChild) { %> child<% } %>">
+            <% } %>
+                    <a href="<%= forum.url %>" style="--forum-light-bg: <%= forum.color.light.bg %>; --forum-dark-bg: <%= forum.color.dark.bg %>;"><% if (forum.icon) { %><i class="<%= forum.icon %>"></i><% } %><%- forum.title %></a>
+            <% if (forum.selected || forum.isChild) { %>
+                </span>
+            <% } %>
+        <% }) %>
+    <% } %>
+</div>

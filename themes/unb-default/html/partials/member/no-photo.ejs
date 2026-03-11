@@ -1,0 +1,7 @@
+<% if (url) { %>
+    <a href="<%= url %>"<% if (includeTooltip) { %> class="tooltip tooltip--<%= tooltipPlacement %>" data-title="<%= tooltip %>"<% } %>>
+<% } %>
+    <span class="<% if (type === 'normal') { %>unb-no-photo<% } else if (type == 'mini') { %>unb-no-photo-thumbnail<% } else { %>unb-no-photo-mini<% } %>" style="--light-bg-color: <%= colors.light.background %>; --light-text-color: <%= colors.light.text %>; --dark-bg-color: <%= colors.dark.backgroundColor %>; --dark-text-color: <%= colors.dark.text %>;"><%= letter %></span>
+<% if (url) { %>
+    </a>
+<% } %>

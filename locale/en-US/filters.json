@@ -1,0 +1,12 @@
+{
+    "all": "All",
+    "unread": "Unread",
+    "read": "Read",
+    "answered": "Answered",
+    "unanswered": "Unanswered",
+    "hot": "Hot",
+    "pinned": "Pinned",
+    "unpinned": "Unpinned",
+    "locked": "Locked",
+    "unlocked": "Unlocked"
+}

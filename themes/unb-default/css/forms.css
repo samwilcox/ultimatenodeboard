@@ -1,0 +1,295 @@
+form {
+    margin: 0;
+    padding: 0;
+}
+
+input, select, textarea, button {
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--text-primary);
+    box-sizing: border-box;
+}
+
+.unb-form-group {
+    margin-bottom: 16px;
+}
+
+.unb-form-group:last-child {
+    margin-bottom: 0;
+}
+
+.unb-float-form-field {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.unb-float-form-field input.margin {
+    padding-left: 38px;
+}
+
+.unb-float-form-field select {
+    padding: 4px;
+    background: var(--clr-surface-a0);
+    border: 2px solid var(--clr-surface-a40);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.unb-float-form-field input {
+    width: 100%;
+    padding: 14px;
+    background: var(--clr-surface-a0);
+    border: 2px solid var(--clr-surface-a40);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.unb-float-form-field-icon {
+    position: absolute;
+    top: 50%;
+    left: 14px;
+    transform: translateY(-50%);
+    color: var(--clr-surface-a40);
+    font-size: 16px;
+    pointer-events: none;
+    transition: color 0.2s;
+}
+
+.unb-float-form-field label {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    color: var(--clr-surface-a40);
+    font-size: 14px;
+    pointer-events: none;
+    background: var(--clr-surface-a0);
+    padding: 0 6px;
+    transition: all 0.2s ease;
+}
+
+.unb-float-form-field label.margin {
+    left: 38px;
+}
+
+.unb-float-form-field input:focus + label, .unb-float-form-field input:not(:placeholder-shown) + label {
+    top: 0px;
+    font-size: 12px;
+    color: var(--clr-primary-a0);
+}
+
+.unb-float-form-field input:focus {
+    border-color: var(--clr-primary-a0);
+    box-shadow: 0 0 0 1px var(--clr-surface-tonal-a40);
+}
+
+.unb-float-form-field input:focus ~ .unb-float-form-field-icon {
+    color: var(--clr-primary-a0);
+}
+
+.unb-float-form-field input::placeholder {
+    color: transparent;
+}
+
+.unb-checkbox-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    width: fit-content;
+    gap: 14px;
+}
+
+.unb-checkbox-title {
+    font-weight: 800;
+    font-size: 14px;
+}
+
+.unb-checkbox-info {
+    font-size: 11px;
+}
+
+.unb-checkbox-normal {
+    font-weight: normal;
+}
+
+.unb-checkbox .unb-checkbox {
+    --bg: transparent;
+    --brdr: var(--clr-primary-a0);
+    --brdr-actv: var(--clr-primary-a0);
+    --brdr-hovr: var(--clr-primary-a0);
+    --dur: calc((var(--size, 2)/2) * 0.6s);
+    display: inline-block; 
+    width: calc(var(--size, 1) * 22px);
+    position: relative;
+}
+
+.unb-checkbox .unb-checkbox:after {
+    content: "";
+    width: 100%;
+    padding-top: 100%;
+    display: block;
+}
+
+.unb-checkbox .unb-checkbox > * {
+    position: absolute;
+}
+
+.unb-checkbox .unb-checkbox input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+    background-color: var(--bg);
+    border-radius: calc(var(--size, 1) * 4px);
+    border: calc(var(--newBrdr, var(--size, 1)) * 1px) solid;
+    color: var(--newBrdrClr, var(--brdr));
+    outline: none;
+    margin: 0;
+    padding: 0;
+    transition: all calc(var(--dur) / 3) linear;
+}
+
+.unb-checkbox .unb-checkbox input:hover, .unb-checkbox .unb-checkbox input:checked {
+    --newBrdr: calc(var(--size, 1) * 2);
+}
+
+.unb-checkbox .unb-checkbox input:hover {
+    --newBrdrClr: var(--brdr-hovr);
+}
+
+.unb-checkbox .unb-checkbox input:checked {
+    --newBrdrClr: var(--brdr-actv);
+    transition-delay: calc(var(--dur) /1.3);
+}
+
+.unb-checkbox .unb-checkbox input:checked + svg {
+    --dashArray: 16 93;
+    --dashOffset: 109;
+}
+
+.unb-checkbox .unb-checkbox svg {
+    fill: none;
+    left: 0;
+    pointer-events: none;
+    stroke: var(--stroke, var(--border-active));
+    stroke-dasharray: var(--dashArray, 93);
+    stroke-dashoffset: var(--dashOffset, 94);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2px;
+    top: 0;
+    transition: stroke-dasharray var(--dur), stroke-dashoffset var(--dur);
+}
+
+.unb-checkbox .unb-checkbox svg, .unb-checkbox .unb-checkbox input {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+form .muted {
+    color: var(--text-muted);
+}
+
+input[type="submit"], input[type="button"] {
+    border-radius: 8px;
+    padding: 12px 20px;
+    background: var(--clr-primary-a0);
+    color: var(--text-primary-button);
+    font-weight: 700;
+    outline: none;
+    border: none;
+    transition: 0.5s ease all;
+}
+
+input[type="submit"]:hover, input[type="button"]:hover {
+    cursor: pointer;
+    background-color: var(--clr-primary-a20);
+    transition: 0.5s ease all;
+}
+
+.unb-checkbox-two input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.unb-checkbox-two .toggle {
+    position: relative;
+    display: block;
+    width: 42px;
+    height: 24px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transform: translate3d(0, 0, 0);
+}
+
+.unb-checkbox-two .toggle:before {
+    content: "";
+    position: relative;
+    top: 1px;
+    left: 1px;
+    width: 40px;
+    height: 22px;
+    display: block;
+    background: var(--clr-surface-a40);
+    border-radius: 12px;
+    transition: background 0.2s ease;
+}
+
+.unb-checkbox-two .toggle span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 24px;
+    height: 24px;
+    display: block;
+    background: var(--bg-primary);
+    border-radius: 50%;
+    box-shadow: 0 2px 6px var(--clr-surface-a20);
+    transition: all 0.2s ease;
+}
+
+.unb-checkbox-two .toggle span svg {
+    margin: 7px;
+    fill: none;
+}
+
+.unb-checkbox-two .toggle span svg path {
+    stroke: var(--clr-surface-a40);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 24;
+    stroke-dashoffset: 0;
+    transition: all 0.5s linear;
+}
+
+.unb-checkbox-two input[type="checkbox"]:checked + .toggle:before {
+    background: var(--clr-primary-a0);
+}
+
+.unb-checkbox-two input[type="checkbox"]:checked + .toggle span {
+    transform: translateX(18px);
+}
+
+.unb-checkbox-two input[type="checkbox"]:checked + .toggle span path {
+    stroke: var(--clr-primary-a0);
+    stroke-dasharray: 25;
+    stroke-dashoffset: 25;
+}
+
+.unb-checkbox-title-two {
+    font-weight: 500;
+    font-size: 15px;
+}
+.unb-checkbox-grid.centered {
+    align-items: center;
+}

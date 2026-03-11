@@ -1,0 +1,104 @@
+/* ============================= */
+/* GitHub Light — Scoped */
+/* Applies when NOT dark-mode */
+/* ============================= */
+
+:not(.dark-mode) pre code.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 1em;
+}
+
+:not(.dark-mode) code.hljs {
+  padding: 3px 5px;
+}
+
+:not(.dark-mode) .hljs {
+  color: #24292e;
+  background: transparent;
+}
+
+:not(.dark-mode) .hljs-doctag,
+:not(.dark-mode) .hljs-keyword,
+:not(.dark-mode) .hljs-meta .hljs-keyword,
+:not(.dark-mode) .hljs-template-tag,
+:not(.dark-mode) .hljs-template-variable,
+:not(.dark-mode) .hljs-type,
+:not(.dark-mode) .hljs-variable.language_ {
+  color: #d73a49;
+}
+
+:not(.dark-mode) .hljs-title,
+:not(.dark-mode) .hljs-title.class_,
+:not(.dark-mode) .hljs-title.class_.inherited__,
+:not(.dark-mode) .hljs-title.function_ {
+  color: #6f42c1;
+}
+
+:not(.dark-mode) .hljs-attr,
+:not(.dark-mode) .hljs-attribute,
+:not(.dark-mode) .hljs-literal,
+:not(.dark-mode) .hljs-meta,
+:not(.dark-mode) .hljs-number,
+:not(.dark-mode) .hljs-operator,
+:not(.dark-mode) .hljs-variable,
+:not(.dark-mode) .hljs-selector-attr,
+:not(.dark-mode) .hljs-selector-class,
+:not(.dark-mode) .hljs-selector-id {
+  color: #005cc5;
+}
+
+:not(.dark-mode) .hljs-regexp,
+:not(.dark-mode) .hljs-string,
+:not(.dark-mode) .hljs-meta .hljs-string {
+  color: #032f62;
+}
+
+:not(.dark-mode) .hljs-built_in,
+:not(.dark-mode) .hljs-symbol {
+  color: #e36209;
+}
+
+:not(.dark-mode) .hljs-comment,
+:not(.dark-mode) .hljs-code,
+:not(.dark-mode) .hljs-formula {
+  color: #6a737d;
+}
+
+:not(.dark-mode) .hljs-name,
+:not(.dark-mode) .hljs-quote,
+:not(.dark-mode) .hljs-selector-tag,
+:not(.dark-mode) .hljs-selector-pseudo {
+  color: #22863a;
+}
+
+:not(.dark-mode) .hljs-subst {
+  color: #24292e;
+}
+
+:not(.dark-mode) .hljs-section {
+  color: #005cc5;
+  font-weight: bold;
+}
+
+:not(.dark-mode) .hljs-bullet {
+  color: #735c0f;
+}
+
+:not(.dark-mode) .hljs-emphasis {
+  font-style: italic;
+}
+
+:not(.dark-mode) .hljs-strong {
+  font-weight: bold;
+}
+
+:not(.dark-mode) .hljs-addition {
+  color: #22863a;
+  background-color: #f0fff4;
+}
+
+:not(.dark-mode) .hljs-deletion {
+  color: #b31d28;
+  background-color: #ffeef0;
+}

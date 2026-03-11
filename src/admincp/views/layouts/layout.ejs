@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html<% if (themeMode === 'dark') { %> class="dark-mode"<% } %>>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="robots" content="noindex">
+        <title>UNB Administrator Control Panel</title>
+
+        <script>
+            (function () {
+                try {
+                var mode = localStorage.getItem('unb.theme.mode');
+                if (mode === 'dark') {
+                    document.documentElement.classList.add('dark-mode');
+                }
+                } catch (e) {}
+            })();
+        </script>
+
+        <link rel="stylesheet" href="<%= urls.base %>/public/fontawesome/css/all.min.css">
+        <link rel="stylesheet" href="<%= _urls.cssUrl %>/dist/unb-admincp.css">
+
+        <script src="<%= _urls.jsUrl %>/dist/unb-admincp-ui.js"></script>
+
+        <script>
+            window.UNB_BOOTSTRAP = {
+                urls: {
+                    base: "<%= urls.base %>",
+                    api: "<%= urls.base %>/api"
+                },
+                locale: {
+                    editor: {
+                        quote: "<%= t('editor.tools.insert.quote.blockquote') %>",
+                        spoiler: "<%= t('editor.tools.insert.spoiler.blockquote') %>"
+                    }
+                }
+            };
+        </script>
+    </head>
+    <body>
+        <div id="unb-background-disabler" data-unb-modal-overlay></div>
+        <div class="unb-top-wall" data-unb-wall></div>
+        <header data-unb-header>
+            <div class="unb-header-grid">
+                <div class="unb-acp-logo"><a href="">UNB Administrator Control Panel</a></div>
+                <div>Search</div>
+                <div>Right</div>
+            </div>
+        </header>
+        <div class="unb-main-menu" data-unb-main-menu>
+            <span class="selected" data-unb-role="general"><a href="#" class="unb-top-border-radius" data-unb-general-menu-item><i class="fa-solid fa-gear"></i></a></span>
+            <span data-unb-role="members"><a href="#"><i class="fa-solid fa-user"></i></a></span>
+            <span data-unb-role="permissions"><a href="#"><i class="fa-solid fa-shield"></i></a></span>
+            <span data-unb-role="groups"><a href="#"><i class="fa-solid fa-user-group"></i></a></span>
+            <span data-unb-role="forums"><a href="#"><i class="fa-solid fa-comment"></i></a></span>
+            <span data-unb-role="themes"><a href="#"><i class="fa-solid fa-palette"></i></a></span>
+            <span data-unb-role="languages"><a href="#"><i class="fa-solid fa-language"></i></a></span>
+            <span data-unb-role="performance"><a href="#"><i class="fa-solid fa-rocket"></i></a></span>
+            <span data-unb-role="security"><a href="#"><i class="fa-solid fa-lock"></i></a></span>
+            <span data-unb-role="logs"><a href="#"><i class="fa-solid fa-scroll"></i></a></span>
+            <span data-unb-role="plugins"><a href="#"><i class="fa-solid fa-puzzle-piece"></i></a></span>
+            <span data-unb-role="support"><a href="#"><i class="fa-solid fa-life-ring"></i></a></span>
+        </div>
+        <div class="unb-sub-menu" data-unb-sub-menu>
+            <div data-unb-role="general">
+                <div class="unb-sub-menu-title"><i class="fa-solid fa-gear"></i><%= t('admin.menu.general') %></div>
+                <div class="unb-sub-menu-body">
+                    <span class="unb-sub-menu-link-title">
+                        <a href="#"><i class="fa-solid fa-angle-down"></i><%= t('admin.submenu.overview') %></a>
+                    </span>
+                    <span class="unb-sub-menu-link-normal">
+                        <a href="<%= _urls.base %>"><%= t('admin.submenu.overview.dashboard') %></a>
+                    </span>
+                </div>
+            </div>
+            <div data-unb-role="members" style="display: none;">
+                <div class="unb-sub-menu-title"><i class="fa-solid fa-user"></i>Members</div>
+                <div class="unb-sub-menu-body">
+                    <span class="unb-sub-menu-link-normal">
+                        <a href="">Dashboard</a>
+                    </span>
+                </div>
+            </div>
+            <div data-unb-role="permissions" style="display: none;">
+                <div class="unb-sub-menu-title"><i class="fa-solid fa-shield"></i>Permissions</div>
+                <div class="unb-sub-menu-body">
+                    <span class="unb-sub-menu-link-normal">
+                        <a href="">Dashboard</a>
+                    </span>
+                </div>
+            </div>
+            <div data-unb-role="groups" style="display: none;">
+                <div class="unb-sub-menu-title"><i class="fa-solid fa-user-group"></i>Groups</div>
+                <div class="unb-sub-menu-body">
+                    <span class="unb-sub-menu-link-normal">
+                        <a href="">Dashboard</a>
+                    </span>
+                </div>
+            </div>
+            <div data-unb-role="forums" style="display: none;">
+                <div class="unb-sub-menu-title"><i class="fa-solid fa-comment"></i>Forums</div>
+                <div class="unb-sub-menu-body">
+                    <span class="unb-sub-menu-link-title">
+                        <a href="#"><i class="fa-solid fa-angle-down"></i><%= t('admin.submenu.forums') %></a>
+                    </span>
+                    <span class="unb-sub-menu-link-normal">
+                        <a href="<%= _urls.forums.forums %>"><%= t('admin.submenu.forums.forums') %></a>
+                    </span>
+                </div>
+            </div>
+            <div data-unb-role="themes" style="display: none;">
+                <div class="unb-sub-menu-title"><i class="fa-solid fa-palette"></i>Themes</div>
+                <div class="unb-sub-menu-body">
+                    <span class="unb-sub-menu-link-normal">
+                        <a href="">Dashboard</a>
+                    </span>
+                </div>
+            </div>
+            <div data-unb-role="languages" style="display: none;">
+                <div class="unb-sub-menu-title"><i class="fa-solid fa-language"></i>Languages</div>
+                <div class="unb-sub-menu-body">
+                    <span class="unb-sub-menu-link-normal">
+                        <a href="">Dashboard</a>
+                    </span>
+                </div>
+            </div>
+            <div data-unb-role="performance" style="display: none;">
+                <div class="unb-sub-menu-title"><i class="fa-solid fa-rocket"></i>Performance</div>
+                <div class="unb-sub-menu-body">
+                    <span class="unb-sub-menu-link-normal">
+                        <a href="">Dashboard</a>
+                    </span>
+                </div>
+            </div>
+            <div data-unb-role="security" style="display: none;">
+                <div class="unb-sub-menu-title"><i class="fa-solid fa-lock"></i>Security</div>
+                <div class="unb-sub-menu-body">
+                    <span class="unb-sub-menu-link-normal">
+                        <a href="">Dashboard</a>
+                    </span>
+                </div>
+            </div>
+            <div data-unb-role="logs" style="display: none;">
+                <div class="unb-sub-menu-title"><i class="fa-solid fa-scroll"></i>Logs</div>
+                <div class="unb-sub-menu-body">
+                    <span class="unb-sub-menu-link-normal">
+                        <a href="">Dashboard</a>
+                    </span>
+                </div>
+            </div>
+            <div data-unb-role="plugins" style="display: none;">
+                <div class="unb-sub-menu-title"><i class="fa-solid fa-puzzle-piece"></i>Plugins</div>
+                <div class="unb-sub-menu-body">
+                    <span class="unb-sub-menu-link-normal">
+                        <a href="">Dashboard</a>
+                    </span>
+                </div>
+            </div>
+            <div data-unb-role="support" style="display: none;">
+                <div class="unb-sub-menu-title"><i class="fa-solid fa-life-ring"></i>Support</div>
+                <div class="unb-sub-menu-body">
+                    <span class="unb-sub-menu-link-normal">
+                        <a href="">Dashboard</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <main data-unb-main>
+            <%- body %>
+        </main>
+    </body>
+</html>

@@ -1,0 +1,46 @@
+<div class="unb-topic-item" data-unb-url="<%= topic.url %>" data-unb-topic-item>
+    <div class="unb-topic-item-col-grid">
+        <div><%- author.photo %></div>
+        <div class="unb-topic-info-row-grid">
+            <div class="unb-topic-item-topic-title<% if (unread) { %> unread<% } %>">
+                <a href="<%= topic.url %>"><%- topic.title %></a>
+                <% if (unread) { %>
+                    <span class="unb-topic-item-info-bubble tooltip tooltip--top" data-title="<%= t('topics.view.builder.bubble.tooltip.unread') %>"><i class="fa-solid fa-eye-slash"></i></span>
+                <% } %>
+                <% if (bubbles.pinned) { %>
+                    <span class="unb-topic-item-info-bubble tooltip tooltip--top" data-title="<%= t('topics.view.builder.bubble.tooltip.pinned') %>"><i class="fa-solid fa-thumbtack"></i></span>
+                <% } %>
+                <% if (bubbles.locked) { %>
+                    <span class="unb-topic-item-info-bubble tooltip tooltip--top" data-title="<%= t('topics.view.builder.bubble.tooltip.locked') %>"><i class="fa-solid fa-lock"></i></span>
+                <% } %>
+                <% if (bubbles.attachments) { %>
+                    <span class="unb-topic-item-info-bubble tooltip tooltip--top" data-title="<%= t('topics.view.builder.bubble.tooltip.attachments') %>"><i class="fa-solid fa-paperclip"></i></span>
+                <% } %>
+                <% if (bubbles.solution) { %>
+                    <span class="unb-topic-item-info-bubble tooltip tooltip--top" data-title="<%= t('topics.view.builder.bubble.tooltip.solution') %>"><i class="fa-solid fa-circle-check"></i></span>
+                <% } %>
+                <% if (bubbles.poll) { %>
+                    <span class="unb-topic-item-info-bubble tooltip tooltip--top" data-title="<%= t('topics.view.builder.bubble.tooltip.poll') %>"><i class="fa-solid fa-square-poll-vertical"></i></span>
+                <% } %>
+            </div> 
+            <div class="unb-topic-item-creator"><%- authorTimestamp %></div>
+            <% if (preview) { %>
+                <div class="unb-topic-item-preview">Preview text</div>
+            <% } %>
+        </div>
+        <div>
+            <% if (forumBubbles.parent) { %>
+                <%- include('../forum/small-bubble.ejs', { smallBubble: forumBubbles.parent }) %>
+            <% } %>
+            <% if (forumBubbles.child) { %>
+                <%- include('../forum/small-bubble.ejs', { smallBubble: forumBubbles.child }) %>
+            <% } %>
+        </div>
+        <div>
+            <div class="unb-topic-item-stats-grid">
+                <div><i class="fa-solid fa-eye"></i><%= totalViews %></div>
+                <div><i class="fa-solid fa-comment"></i><%= totalPosts %></div>
+            </div>
+        </div>
+    </div>
+</div>

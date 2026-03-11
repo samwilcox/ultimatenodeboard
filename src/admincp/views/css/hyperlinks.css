@@ -1,0 +1,192 @@
+.unb-main-menu a, .unb-main-menu a:link, .unb-main-menu a:active, .unb-main-menu a:visited {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: 0.5s ease all;
+    display: block;
+    font-size: 18px;
+    padding: 18px;
+}
+
+.unb-main-menu a:hover {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: 0.5s ease all;
+    background: var(--bg-main-menu-hover);
+}
+
+.unb-main-menu a:first-of-type {
+    border-radius: 8px 8px 0 0;
+}
+
+.unb-main-menu a:last-of-type {
+    border-radius: 0 0 8px 8px;
+}
+
+.unb-main-menu a:only-child {
+    border-radius: 8px 8px 0 0;
+}
+
+.unb-main-menu .selected a, .unb-main-menu .selected a:link, .unb-main-menu .selected a:active, .unb-main-menu .selected a:visited {
+    color: var(--text-dark);
+    background: var(--clr-primary-a0);
+    border-radius: var(--menu-radius);
+} 
+
+.unb-main-menu .selected a:hover {
+    background: var(--clr-primary-a30);
+}
+
+.unb-acp-logo a, .unb-acp-logo a:link, .unb-acp-logo a:active, .unb-acp-logo a:visited {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: 0.5s ease all;
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.unb-acp-logo a:hover {
+    color: var(--clr-primary-a0);
+    text-decoration: none;
+    transition: 0.5s ease all;
+}
+
+.unb-sub-menu-link-normal a, .unb-sub-menu-link-normal a:link, .unb-sub-menu-link-normal a:active, .unb-sub-menu-link-normal a:visited {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: 0.5s ease all;
+    border-radius: 8px;
+    padding: 10px;
+    display: block;
+}
+
+.unb-sub-menu-link-normal a:hover {
+    color: var(--text-primar);
+    text-decoration: none;
+    transition: 0.5s ease all;
+    background: var(--clr-surface-a0);
+}
+
+.unb-sub-menu-link-title a, .unb-sub-menu-link-title a:link, .unb-sub-menu-link-title a:active, .unb-sub-menu-link-title a:visited {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: 0.5s ease all;
+    border-radius: 8px;
+    padding: 10px;
+    display: block;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.unb-sub-menu-link-title a:hover {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: 0.5s ease all;
+    background: var(--clr-surface-a0);
+}
+
+.unb-sub-menu-link-title a i {
+    margin-right: 4px;
+}
+
+.unb-button-one a, .unb-button-one a:link, .unb-button-one a:active, .unb-button-one a:visited {
+    color: var(--text-dark);
+    text-decoration: none;
+    transition: 0.5s ease all;
+    border-radius: 8px;
+    background: var(--clr-primary-a0);
+    font-weight: 600;
+    padding: 12px 20px;
+    margin-left: 10px;
+}
+
+.unb-button-one a:hover {
+    color: var(--text-dark);
+    text-decoration: none;
+    transition: 0.5s ease all;
+    background: var(--clr-primary-a40);
+}
+
+.unb-button-one a:first-of-type {
+    margin-left: 0;
+}
+
+.unb-button-one a i {
+    margin-right: 8px;
+}
+
+.unb-form-tabbing-bar a, .unb-form-tabbing-bar a:link, .unb-form-tabbing-bar a:active, .unb-form-tabbing-bar a:visited {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: 0.5s ease all;
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 12px;
+    display: inline-block;
+}
+
+.unb-form-tabbing-bar a:hover {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: 0.5s ease all;
+    background: var(--clr-surface-a0);
+}
+
+.unb-form-tabbing-bar .selected a, .unb-form-tabbing-bar .selected a:link, .unb-form-tabbing-bar .selected a:active, .unb-form-tabbing-bar .selected a:visited {
+    background: var(--clr-surface-a40);
+}
+
+.unb-form-tabbing-bar .selected a:hover {
+    background: var(--clr-surface-a20);
+}
+
+.unb-drop-down-links a, .unb-drop-down-links a:link, .unb-drop-down-links a:active, .unb-drop-down-links a:visited {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: 0.5s ease all;
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 14px;
+    border-left: 5px solid transparent;
+}
+
+.unb-drop-down-links a:hover {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: 0.5s ease all;
+    background: var(--clr-surface-a0);
+    border-left: 5px solid var(--clr-primary-a0);
+}
+
+.unb-drop-down-links a i {
+    display: inline-block;
+    width: 16px;
+    margin-right: 6px;
+    text-align: center;
+}
+
+.unb-drop-down-links a:first-child {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.unb-drop-down-links a:last-child {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.unb-drop-down-links a:only-child {
+    border-radius: 8px;
+}
+
+.unb-modal-header a, .unb-modal-header a:link, .unb-modal-header a:active, .unb-modal-header a:visited {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: 0.5s ease all;
+}
+
+.unb-modal-header a:hover {
+    color: var(--clr-primary-a0);
+    text-decoration: none;
+    transition: 0.5s ease all;
+}
